@@ -141,7 +141,7 @@ public class TwitterLogin {
 
 					long userID = accessToken.getUserId();
 					twitterUserData = twitter.showUser(userID);
-					MainActivity.loggedIn = true;
+					MainActivity.loggedInTwitter = true;
 				} catch (Exception e) {
 					Log.e("Twitter Login Error", "> " + e.getMessage());
 					twitterUserData = null;

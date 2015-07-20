@@ -122,7 +122,7 @@ public class TwitterWriteActivity extends FragmentActivity {
 			}
 		});
 		
-		
+		twitterEditTxt.setText("Yay I just connected my twitter account to Twictionary!");
 		twitterEditTxt.addTextChangedListener(new TextWatcher() {
 			
 			@Override

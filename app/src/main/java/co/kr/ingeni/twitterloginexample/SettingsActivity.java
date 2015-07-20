@@ -1,188 +1,171 @@
 package co.kr.ingeni.twitterloginexample;
 
-import java.util.Locale;
-
-import android.app.Activity;
-import android.app.ActionBar;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.support.v13.app.FragmentPagerAdapter;
+import android.annotation.TargetApi;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.preference.CheckBoxPreference;
+import android.preference.Preference;
+import android.preference.PreferenceActivity;
+import android.preference.PreferenceCategory;
+import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
+import android.preference.Preference.OnPreferenceClickListener;
+import android.widget.Toast;
 
+import com.kidgeniushq.instagram.InstagramApp;
 
-public class SettingsActivity extends Activity implements ActionBar.TabListener {
+public class SettingsActivity extends PreferenceActivity {
+    private final String client_id = "49fcbbb3abe9448798d8849806da6cd4";
+    private final String client_secret = "424a0cc8965a4f7da7c73897fb90b810";
+    private final String callback_url = "http://phantom.com";
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v13.app.FragmentStatePagerAdapter}.
-     */
-    SectionsPagerAdapter mSectionsPagerAdapter;
+    private static final boolean ALWAYS_SIMPLE_PREFS = false;
+    private InstagramApp mApp;
+    private InstagramApp.OAuthAuthenticationListener listener;
 
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
-    ViewPager mViewPager;
+    CheckBoxPreference twitPref,igPref;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
 
-        // Set up the action bar.
-        final ActionBar actionBar = getActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
-
-        // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.pager);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
-
-        // When swiping between different sections, select the corresponding
-        // tab. We can also use ActionBar.Tab#select() to do this if we have
-        // a reference to the Tab.
-        mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        listener = new InstagramApp.OAuthAuthenticationListener() {
             @Override
-            public void onPageSelected(int position) {
-                actionBar.setSelectedNavigationItem(position);
+            public void onSuccess() {
+                Toast.makeText(SettingsActivity.this, "Connected to IG!", Toast.LENGTH_LONG).show();
+            }
+            @Override
+            public void onFail(String error) {
+                Toast.makeText(SettingsActivity.this, error, Toast.LENGTH_SHORT).show();
+            }
+        };
+        mApp = new InstagramApp(this, client_id, client_secret, callback_url);
+        mApp.setListener(listener);
+
+        setupSimplePreferencesScreen();
+    }
+
+    private void setupSimplePreferencesScreen() {
+        if (!isSimplePreferences(this)) {
+            return;
+        }
+
+        PreferenceCategory fakeHeader = new PreferenceCategory(this);
+        fakeHeader.setTitle(R.string.pref_header_connect);
+
+        addPreferencesFromResource(R.xml.pref_general);
+
+        twitPref = (CheckBoxPreference) findPreference("twit_checkbox");
+        twitPref.setChecked(TwitterLogin.getTwitterLoginCheck());
+        twitPref.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+            public boolean onPreferenceClick(Preference preference) {
+                //open browser or intent here
+                if (TwitterLogin.getTwitterLoginCheck() != true) {
+                    TwitterLogin twitterLogin = new TwitterLogin(SettingsActivity.this);
+                    twitterLogin.setTwitterLogin();
+                } else {
+                    TwitterLogin twitterLogin = new TwitterLogin(SettingsActivity.this);
+                    twitterLogin.removeAccessToken();
+                }
+                refresh();
+                return true;
             }
         });
 
-        // For each of the sections in the app, add a tab to the action bar.
-        for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
-            // Create a tab with text corresponding to the page title defined by
-            // the adapter. Also specify this Activity object, which implements
-            // the TabListener interface, as the callback (listener) for when
-            // this tab is selected.
-            actionBar.addTab(
-                    actionBar.newTab()
-                            .setText(mSectionsPagerAdapter.getPageTitle(i))
-                            .setTabListener(this));
-        }
-    }
+        igPref = (CheckBoxPreference) findPreference("ig_checkbox");
+        igPref.setChecked(mApp.hasAccessToken());
+        igPref.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+            public boolean onPreferenceClick(Preference preference) {
+                connectToInstagram();
+                return true;
+            }
+        });
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_settings, menu);
-        return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    public boolean onIsMultiPane() {
+        return isXLargeTablet(this) && !isSimplePreferences(this);
+    }
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+    private static boolean isXLargeTablet(Context context) {
+        return (context.getResources().getConfiguration().screenLayout
+                & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_XLARGE;
+    }
+
+    private static boolean isSimplePreferences(Context context) {
+        return ALWAYS_SIMPLE_PREFS
+                || Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB
+                || !isXLargeTablet(context);
+    }
+
+    private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
+        @Override
+        public boolean onPreferenceChange(Preference preference, Object value) {
+            String stringValue = value.toString();
+                preference.setSummary(stringValue);
             return true;
         }
+    };
 
-        return super.onOptionsItemSelected(item);
+    private static void bindPreferenceSummaryToValue(Preference preference) {
+        preference.setOnPreferenceChangeListener(sBindPreferenceSummaryToValueListener);
+        sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,
+                PreferenceManager
+                        .getDefaultSharedPreferences(preference.getContext())
+                        .getString(preference.getKey(), ""));
     }
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    public static class GeneralPreferenceFragment extends PreferenceFragment {
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.pref_general);
+        }
+    }
+    public void connectToInstagram(){
+        if (mApp.hasAccessToken()) {
+            final AlertDialog.Builder builder = new AlertDialog.Builder(
+                    SettingsActivity.this);
+            builder.setMessage("Disconnect from Instagram?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(
+                                        DialogInterface dialog, int id) {
+                                    mApp.resetAccessToken();
+                                    Toast.makeText(getApplicationContext(), "Connected to IG! as "+ mApp.getUserName(), Toast.LENGTH_LONG).show();
+                                    refresh();
+                                }
+                            })
+                    .setNegativeButton("No",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(
+                                        DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                    refresh();
+                                }
+                            });
+            final AlertDialog alert = builder.create();
+            alert.show();
+        } else {
+            mApp.authorize();
+        }
+        refresh();
+    }
     @Override
-    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-        // When the given tab is selected, switch to the corresponding page in
-        // the ViewPager.
-        mViewPager.setCurrentItem(tab.getPosition());
+    public void onResume(){
+        super.onResume();
+        refresh();
     }
 
-    @Override
-    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+    private void refresh(){
+        twitPref.setChecked(TwitterLogin.getTwitterLoginCheck());
+        igPref.setChecked(mApp.hasAccessToken());
     }
-
-    @Override
-    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-    }
-
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
-        public SectionsPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
-        }
-
-        @Override
-        public int getCount() {
-            // Show 3 total pages.
-            return 3;
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            Locale l = Locale.getDefault();
-            switch (position) {
-                case 0:
-                    return getString(R.string.title_section1).toUpperCase(l);
-                case 1:
-                    return getString(R.string.title_section2).toUpperCase(l);
-                case 2:
-                    return getString(R.string.title_section3).toUpperCase(l);
-            }
-            return null;
-        }
-    }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
-            return rootView;
-        }
-    }
-
 }
