@@ -1,9 +1,11 @@
-package co.kr.ingeni.twitterloginexample;
+package com.kidgeniushq.twitter;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.webkit.WebView;
+
+import co.kr.ingeni.twitterloginexample.R;
 
 public class TwitterWebView extends Activity {
 	

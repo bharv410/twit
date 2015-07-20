@@ -1,17 +1,14 @@
 package com.kidgeniushq.asynctasks;
 
 import android.os.AsyncTask;
-import android.util.Log;
+
+import com.kidgeniushq.twitter.TwitterLogin;
 
 import java.util.ArrayList;
 
 import co.kr.ingeni.twitterloginexample.MainActivity;
-import co.kr.ingeni.twitterloginexample.TwitterLogin;
-import twitter4j.PagableResponseList;
 import twitter4j.ResponseList;
 import twitter4j.TwitterException;
-import twitter4j.User;
-import twitter4j.Status;
 
 /**
  * Created by benjamin.harvey on 7/19/15.

@@ -1,15 +1,15 @@
 package co.kr.ingeni.twitterloginexample;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -22,8 +22,10 @@ import com.kidgeniushq.adapters.UsersAdapter;
 import com.kidgeniushq.asynctasks.GetInstagramImagesAsync;
 import com.kidgeniushq.asynctasks.GetTweetsAsync;
 import com.kidgeniushq.instagram.InstagramApp;
+import com.kidgeniushq.twitter.TwitterLogin;
 import com.melnykov.fab.FloatingActionButton;
 import com.squareup.picasso.Picasso;
+import android.widget.AdapterView.OnItemClickListener;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -131,6 +133,18 @@ public class MainActivity extends Activity {
 		TweetsAdapter adapterForTweets = new TweetsAdapter(getApplicationContext(), new ArrayList<Status>(tweets.subList(1,5)));
 		followingListView.setAdapter(adapterForTweets);
 		adapterForTweets.notifyDataSetChanged();
+
+		followingListView.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> parent, View view,
+									int position, long id) {
+
+				Status tweet = (Status)followingListView.getItemAtPosition(position);
+				Intent i = new Intent(Intent.ACTION_VIEW);
+				String tweetUrl = "https://twitter.com/" + tweet.getUser().getScreenName() + "/status/" + String.valueOf(tweet.getId());
+				i.setData(Uri.parse(tweetUrl));
+				startActivity(i);
+			}
+		});
 	}
 
 	public void goToSettings(View v){

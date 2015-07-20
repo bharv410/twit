@@ -1,4 +1,4 @@
-package co.kr.ingeni.twitterloginexample;
+package com.kidgeniushq.twitter;
 
 
 public interface TwitterWriteTaskFunction {

@@ -17,6 +17,7 @@ import android.preference.Preference.OnPreferenceClickListener;
 import android.widget.Toast;
 
 import com.kidgeniushq.instagram.InstagramApp;
+import com.kidgeniushq.twitter.TwitterLogin;
 
 public class SettingsActivity extends PreferenceActivity {
     private final String client_id = "49fcbbb3abe9448798d8849806da6cd4";

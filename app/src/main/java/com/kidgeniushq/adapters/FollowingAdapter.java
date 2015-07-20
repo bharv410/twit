@@ -1,4 +1,4 @@
-package co.kr.ingeni.twitterloginexample;
+package com.kidgeniushq.adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import co.kr.ingeni.twitterloginexample.R;
 import twitter4j.User;
 
 import com.squareup.picasso.Picasso;

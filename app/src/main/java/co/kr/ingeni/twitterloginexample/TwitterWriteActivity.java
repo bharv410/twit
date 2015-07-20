@@ -17,6 +17,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.kidgeniushq.twitter.TwitterLogin;
+import com.kidgeniushq.twitter.TwitterUserTaskFunction;
+import com.kidgeniushq.twitter.TwitterWriteTaskFunction;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;

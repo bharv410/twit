@@ -39,7 +39,6 @@ public class GetInstagramImagesAsync extends AsyncTask<URL, Void, Integer> {
 
     protected Integer doInBackground(URL... urls) {
         try {
-            Log.d("benmark", "Opening URL " + urls[0].toString());
             HttpURLConnection urlConnection = (HttpURLConnection) urls[0].openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.setDoInput(true);
