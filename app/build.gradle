@@ -1,0 +1,28 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        applicationId "co.kr.ingeni.twitterloginexample"
+        minSdkVersion 13
+        targetSdkVersion 13
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    compile files('libs/twitter4j-core-4.0.2.jar')
+    compile files('libs/universal-image-loader-1.9.3-with-sources.jar')
+    compile group: 'com.squareup.picasso', name: 'picasso', version: '2.3.2'
+    compile 'com.android.support:support-v4:22.2.0'
+    compile 'com.android.support:support-v13:22.2.0'
+    compile 'com.melnykov:floatingactionbutton:1.3.0'
+}
