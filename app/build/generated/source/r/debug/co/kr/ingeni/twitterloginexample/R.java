@@ -121,28 +121,31 @@ containing a value of this type.
         public static final int twitter_btn=0x7f02000e;
     }
     public static final class id {
-        public static final int action_settings=0x7f0b0015;
-        public static final int backBtn=0x7f0b0008;
-        public static final int fab=0x7f0b0007;
-        public static final int genre=0x7f0b0012;
+        public static final int action_settings=0x7f0b0018;
+        public static final int backBtn=0x7f0b000b;
+        public static final int fab=0x7f0b0008;
+        public static final int genre=0x7f0b0015;
         public static final int list=0x7f0b0003;
         public static final int mini=0x7f0b0000;
         public static final int normal=0x7f0b0001;
-        public static final int rating=0x7f0b0011;
-        public static final int releaseYear=0x7f0b0013;
-        public static final int text_count=0x7f0b000c;
-        public static final int thumbnail=0x7f0b000f;
-        public static final int title=0x7f0b0010;
-        public static final int todImageView=0x7f0b0006;
-        public static final int todText=0x7f0b0005;
+        public static final int rating=0x7f0b0014;
+        public static final int releaseYear=0x7f0b0016;
+        public static final int textView=0x7f0b0005;
+        public static final int textView2=0x7f0b000a;
+        public static final int text_count=0x7f0b000f;
+        public static final int thumbnail=0x7f0b0012;
+        public static final int title=0x7f0b0013;
+        public static final int todImageView=0x7f0b0007;
+        public static final int todText=0x7f0b0006;
+        public static final int todTitleTextView=0x7f0b0009;
         public static final int tweetofthedaylayout=0x7f0b0004;
-        public static final int twitter_edit_txt=0x7f0b000e;
+        public static final int twitter_edit_txt=0x7f0b0011;
         public static final int twitter_login_btn=0x7f0b0002;
-        public static final int twitter_name=0x7f0b000a;
-        public static final int twitter_profile_image=0x7f0b0009;
-        public static final int twitter_screen_name=0x7f0b000b;
-        public static final int twitter_web_view=0x7f0b0014;
-        public static final int twitter_write_btn=0x7f0b000d;
+        public static final int twitter_name=0x7f0b000d;
+        public static final int twitter_profile_image=0x7f0b000c;
+        public static final int twitter_screen_name=0x7f0b000e;
+        public static final int twitter_web_view=0x7f0b0017;
+        public static final int twitter_write_btn=0x7f0b0010;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;

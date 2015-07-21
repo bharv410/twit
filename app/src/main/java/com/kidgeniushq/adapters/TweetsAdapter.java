@@ -38,10 +38,10 @@ public class TweetsAdapter extends ArrayAdapter<Status> {
         TextView year = (TextView) convertView.findViewById(R.id.releaseYear);
 
         Picasso.with(getContext()).load(m.getUser().getBiggerProfileImageURL()).into(thumbNail);
-        title.setText(m.getText());
-        rating.setText("Full name: " + String.valueOf(m.getUser().getName()));
-        genre.setText("RTs = " + String.valueOf(m.getRetweetCount()));
-        year.setText(String.valueOf(m.getInReplyToScreenName()));
+        //title.setText(m.getText());
+        rating.setText(m.getText());
+        //genre.setText("RTs = " + String.valueOf(m.getRetweetCount()));
+        //year.setText(String.valueOf(m.getInReplyToScreenName()));
 
         return convertView;
     }

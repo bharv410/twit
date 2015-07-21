@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -53,7 +52,7 @@ public class MainActivity extends Activity {
 	private ImageView twitterLoginBtn,todImageView;
 	private RelativeLayout tweetOfTheDayLayout;
 	private ListView followingListView;
-	private TextView todTextView;
+	private TextView todTextView,todTitleTextView;
 	private FloatingActionButton fab;
 
 	ProgressDialog progress;
@@ -85,7 +84,6 @@ public class MainActivity extends Activity {
 		tweetOfTheDayLayout.setVisibility(View.VISIBLE);
 		todTextView.setVisibility(View.VISIBLE);
 		todTextView.setTextColor(Color.BLUE);
-		todTextView.setText("Click the button in the bottom right to get started");
 	}
 	
 	@Override
@@ -129,8 +127,10 @@ public class MainActivity extends Activity {
 				fab.show();
 			}
 		}, 1000);
+		todTitleTextView = (TextView)findViewById(R.id.todTitleTextView);
+		todTitleTextView.setText("Tweet Of The Day");
 
-		TweetsAdapter adapterForTweets = new TweetsAdapter(getApplicationContext(), new ArrayList<Status>(tweets.subList(1,5)));
+		TweetsAdapter adapterForTweets = new TweetsAdapter(getApplicationContext(), new ArrayList<Status>(tweets.subList(3,5)));
 		followingListView.setAdapter(adapterForTweets);
 		adapterForTweets.notifyDataSetChanged();
 
@@ -156,7 +156,7 @@ public class MainActivity extends Activity {
 		todImageView.setVisibility(View.VISIBLE);
 		todTextView.setVisibility(View.VISIBLE);
 		Picasso.with(getApplicationContext()).load(url).into(todImageView);
-		todTextView.setText("This is your instagram photo of the day");
+		todTextView.setText("(No caption)");
 
 		tweetOfTheDayLayout.setVisibility(View.VISIBLE);
 	}

@@ -20,20 +20,20 @@
         android:dividerHeight="1dp"
         android:listSelector="@drawable/list_row_selector"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tweetofthedaylayout"/>
+        android:layout_below="@+id/twitter_login_btn"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:id="@+id/tweetofthedaylayout"
         android:background="@drawable/tweetbg"
-        android:layout_alignParentTop="true"
+        android:layout_above="@+id/textView"
         android:layout_alignParentLeft="true">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TWEET OF THE DAY"
+            android:text="Please Connect Accounts"
             android:textSize="20dp"
             android:id="@+id/todText"
             android:textColor="@color/white_alpha"
@@ -71,5 +71,26 @@
         fab:fab_colorNormal="#c0c0c0"
         fab:fab_colorPressed="#66cccc"
         fab:fab_colorRipple="#c6e2ff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text=""
+        android:id="@+id/todTitleTextView"
+        android:layout_above="@+id/list"
+        android:layout_alignParentLeft="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Instagram Pic of the Day"
+        android:id="@+id/textView2"
+        android:layout_above="@+id/tweetofthedaylayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/tweetbg"
+        android:layout_alignParentRight="true"/>
 
 </RelativeLayout>
