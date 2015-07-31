@@ -8,15 +8,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.text.format.DateUtils;
 import android.text.format.Time;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.kidgeniushq.ArticlesDatasource;
 import com.kidgeniushq.handlers.HandleXML;
 import com.kidgeniushq.instagram.InstagramApp;
 import com.kidgeniushq.interfaces.MyPreferences;
+import com.kidgeniushq.models.HNHHArticle;
 import com.kidgeniushq.models.InstagramPost;
 
 import net.orange_box.storebox.StoreBox;
@@ -25,21 +28,25 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+import org.w3c.dom.Comment;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
 import co.kr.ingeni.twitterloginexample.MainActivity;
 import co.kr.ingeni.twitterloginexample.R;
 import co.kr.ingeni.twitterloginexample.SettingsActivity;
-import android.os.Handler;
 
 import static com.kidgeniushq.instagram.InstagramApp.streamToString;
 
@@ -61,12 +68,31 @@ public class InstaService extends WakefulIntentService{
     private String finalUrl="http://feeds.feedburner.com/realhotnewhiphop.xml";
     private HandleXML obj;
 
+    private ArticlesDatasource articlesDatasource;
+
     public InstaService() {
         super("InstaService");
     }
 
     @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        //articlesDatasource
+        return super.onStartCommand(intent,flags,startId);
+    }
+
+    @Override
     protected void onHandleIntent(Intent intent) {
+        articlesDatasource = new ArticlesDatasource(this);
+        try{
+            articlesDatasource.open();
+            List<HNHHArticle> values = articlesDatasource.getAllArticles();
+            for(HNHHArticle article : values){
+                Log.v("benmark", "article = " + article.getCaption());
+            }
+        }catch (SQLException e){
+        }
+
+
         checkHotNewHipHop();
         checkIG();
         scheduleNextUpdate();
@@ -131,7 +157,7 @@ public class InstaService extends WakefulIntentService{
         }
     }
 
-    private class CheckHotNewHipHop extends AsyncTask<URL, Void, String>  {
+    private class CheckHotNewHipHop extends AsyncTask<URL, Void, List<HNHHArticle>>  {
         private String title = "title";
         private String link = "url";
         private String image = "image";
@@ -149,7 +175,7 @@ public class InstaService extends WakefulIntentService{
             this.context = ctx;
         }
 
-        protected String doInBackground(URL... urls) {
+        protected List<HNHHArticle> doInBackground(URL... urls) {
             try {
                 URL url = new URL(urlString);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -169,30 +195,31 @@ public class InstaService extends WakefulIntentService{
                 myparser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
                 myparser.setInput(stream, null);
 
-                parseXMLAndStoreIt(myparser);
-                stream.close();
+                return parseXMLAndStoreIt(myparser, stream);
             }
 
             catch (Exception e) {
+                return null;
             }
-            return "";
         }
 
-        protected void onPostExecute(String result) {
+        protected void onPostExecute(List<HNHHArticle> result) {
+
             MyPreferences preferences = StoreBox.create(getApplicationContext(), MyPreferences.class);
             Set<String> allItems = preferences.getArticles() == null ? new LinkedHashSet<String>() : preferences.getArticles();
 
-            if(notif.equals("") || allItems.contains(result))
-                Log.v("benmark", "no meek hhnhh");
-            else{
-                showNotifWithPostOrNah(notif);
+            for(HNHHArticle article : result){
+                if(article.getCaption().contains("Meek")){
+                    showNotifWithPostOrNah(article.getCaption());
+                }
             }
 
             allItems.add(notif);
             preferences.setArticles(allItems);
 
         }
-        public void parseXMLAndStoreIt(XmlPullParser myParser) {
+        List<HNHHArticle> parseXMLAndStoreIt(XmlPullParser myParser, InputStream stream) {
+            ArrayList<HNHHArticle> articles = new ArrayList<HNHHArticle>();
             int event;
             String text=null;
 
@@ -201,6 +228,7 @@ public class InstaService extends WakefulIntentService{
 
                 while (event != XmlPullParser.END_DOCUMENT) {
                     String name=myParser.getName();
+                    HNHHArticle thisArticle = new HNHHArticle("");
 
                     switch (event){
                         case XmlPullParser.START_TAG:
@@ -214,35 +242,40 @@ public class InstaService extends WakefulIntentService{
 
                             if(name.equals("title")){
                                 title = text;
-                                if(title.contains("Meek"))
-                                    notif = title;
+                                thisArticle.setCaption(title);
                             }
 
                             else if(name.equals("link")){
                                 link = text;
-                                if(link.contains("Meek"))
-                                    notif = link;
+                                thisArticle.setLink(link);
                             }
 
                             else if(name.equals("description")){
                                 description = text;
+                                thisArticle.setInfo(description);
                             }
 
-                            else{
-                            }
-
+                            else if(name.equals("url")){
+                            urlString = text;
+                        }
+                            articles.add(thisArticle);
                             break;
                     }
-
+                    articlesDatasource.createArticle(thisArticle.getCaption(), thisArticle.getLink(), thisArticle.getInfo());
                     event = myParser.next();
                 }
 
                 parsingComplete = false;
             }
-
             catch (Exception e) {
                 e.printStackTrace();
             }
+            try {
+                stream.close();
+            }catch (IOException e){
+
+            }
+            return articles;
         }
     }
 
