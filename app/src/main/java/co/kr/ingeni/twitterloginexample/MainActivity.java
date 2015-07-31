@@ -101,8 +101,6 @@ public class MainActivity extends Activity {
 		if(mApp.hasAccessToken()){
 
 			startService(new Intent(getApplicationContext(), InstaService.class));
-
-			Toast.makeText(getApplicationContext(), "got ig images", Toast.LENGTH_SHORT).show();
 			URL url;
 			try {
 				url = new URL(TAGSELFIE_URL + "?access_token=" + getSharedPreferences(SHARED, Context.MODE_PRIVATE).getString(API_ACCESS_TOKEN, null));

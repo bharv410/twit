@@ -15,4 +15,10 @@ public interface MyPreferences {
     @KeyByString("igposts")
     void setIGPosts(Set<String> posts);
 
+    @KeyByString("hnhharticles")
+    Set<String> getArticles();
+
+    @KeyByString("hnhharticles")
+    void setArticles(Set<String> posts);
+
 }

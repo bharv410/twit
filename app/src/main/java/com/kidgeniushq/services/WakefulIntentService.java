@@ -66,30 +66,6 @@ public class WakefulIntentService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        scheduleNextUpdate();
         lockLocal.release();
-    }
-    private void scheduleNextUpdate()
-    {
-        Intent intent = new Intent(this, this.getClass());
-        PendingIntent pendingIntent =
-                PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-        // The update frequency should often be user configurable.  This is not.
-
-        long currentTimeMillis = System.currentTimeMillis();
-        long nextUpdateTimeMillis = currentTimeMillis + 15 * DateUtils.SECOND_IN_MILLIS;
-        Time nextUpdateTime = new Time();
-        nextUpdateTime.set(nextUpdateTimeMillis);
-
-        if (nextUpdateTime.hour < 7 || nextUpdateTime.hour >= 23)
-        {
-            nextUpdateTime.hour = 8;
-            nextUpdateTime.minute = 0;
-            nextUpdateTime.second = 0;
-            nextUpdateTimeMillis = nextUpdateTime.toMillis(false) + DateUtils.DAY_IN_MILLIS;
-        }
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC, nextUpdateTimeMillis, pendingIntent);
     }
 }

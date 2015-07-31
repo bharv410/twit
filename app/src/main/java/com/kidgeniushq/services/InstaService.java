@@ -1,5 +1,6 @@
 package com.kidgeniushq.services;
 
+import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -8,12 +9,15 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.support.v4.app.NotificationCompat;
+import android.text.format.DateUtils;
+import android.text.format.Time;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.kidgeniushq.handlers.HandleXML;
 import com.kidgeniushq.instagram.InstagramApp;
 import com.kidgeniushq.interfaces.MyPreferences;
+import com.kidgeniushq.models.InstagramPost;
 
 import net.orange_box.storebox.StoreBox;
 
@@ -21,16 +25,21 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
 
+import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.LinkedHashSet;
+import java.util.Random;
 import java.util.Set;
 
 import co.kr.ingeni.twitterloginexample.MainActivity;
 import co.kr.ingeni.twitterloginexample.R;
 import co.kr.ingeni.twitterloginexample.SettingsActivity;
+import android.os.Handler;
 
 import static com.kidgeniushq.instagram.InstagramApp.streamToString;
 
@@ -58,22 +67,20 @@ public class InstaService extends WakefulIntentService{
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        //get hotnewhh
-        obj = new HandleXML(finalUrl);
-        obj.fetchXML();
+        checkHotNewHipHop();
+        checkIG();
+        scheduleNextUpdate();
+        super.onHandleIntent(intent);
+    }
 
-        Log.v("benmark", "obj.title " + obj.getTitle());
+    private void checkHotNewHipHop(){
+        new CheckHotNewHipHop(finalUrl, this).execute();
+    }
 
-
-
-
-
-
-
+    private void checkIG(){
         //get ig
         mApp = new InstagramApp(this, client_id, client_secret, callback_url);
         if(mApp.hasAccessToken()){
-            Toast.makeText(getApplicationContext(), "got ig images", Toast.LENGTH_SHORT).show();
             URL url;
             try {
                 url = new URL(TAGSELFIE_URL + "?access_token=" + getSharedPreferences(SHARED, Context.MODE_PRIVATE).getString(API_ACCESS_TOKEN, null));
@@ -82,12 +89,7 @@ public class InstaService extends WakefulIntentService{
                 e.printStackTrace();
             }
         }else{
-            Log.v("benmark", "not logged in");
-            //not logged in
-            showNotif("Not loggedin IG");
         }
-
-        super.onHandleIntent(intent);
     }
 
     private class CheckPopularIg extends AsyncTask<URL, Void, Integer>  {
@@ -98,14 +100,11 @@ public class InstaService extends WakefulIntentService{
                 HttpURLConnection urlConnection = (HttpURLConnection) urls[0].openConnection();
                 urlConnection.setRequestMethod("GET");
                 urlConnection.setDoInput(true);
-                //urlConnection.setDoOutput(true);
                 urlConnection.connect();
                 String response = streamToString(urlConnection.getInputStream());
 
-                System.out.println(response);
                 JSONObject jsonObj = (JSONObject) new JSONTokener(response).nextValue();
                 jsonArr = jsonObj.getJSONArray("data");
-                Log.i("benmark", jsonArr.toString());
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -115,35 +114,144 @@ public class InstaService extends WakefulIntentService{
         protected void onPostExecute(Integer result) {
             MyPreferences preferences = StoreBox.create(getApplicationContext(), MyPreferences.class);
             Set<String> allItems = preferences.getIGPosts() == null ? new LinkedHashSet<String>() : preferences.getIGPosts();
-            int previousSize = (allItems == null ? 0 : allItems.size());
-
             Set<String> items = new LinkedHashSet<String>();
             try {
                 for (int i = 0; i < jsonArr.length(); i++) {
-                    items.add(jsonArr.getJSONObject(i).getJSONObject("images").getJSONObject("low_resolution").getString("url"));
-
-                    String username = jsonArr.getJSONObject(i).getJSONObject("user").getString("username");
-                    if(username.equals("champagnepapi") || username.equals("kendalljenner") || username.equals("menacetodennis")
-                            || username.equals("instagram") || username.equals("beyonce") || username.equals("kimkardashian")
-                            || username.equals("taylorswift") || username.equals("selenagomez") || username.equals("nickiminaj")
-                            || username.equals("mileycyrus") || username.equals("katyperry")) {
-                        allItems.add(jsonArr.getJSONObject(i).getJSONObject("images").getJSONObject("low_resolution").getString("url"));
-                        showNotifWithPostOrNah(username + " just posted IG");
-                    }
+                    InstagramPost igpost = new InstagramPost(jsonArr.getJSONObject(i));
+                    items.add(igpost.getPostId());
+                    showNotifIfNewPicIsPopular(igpost.getUsername(), igpost.getPostId(), allItems);
+                    allItems.add(igpost.getPostId());
                 }
+
                 preferences.setIGPosts(allItems);
-                int addedAmount = allItems.size() - previousSize;
-                Log.v("benmark", "added " + String.valueOf(addedAmount));
-                Log.v("benmark", "size =  " + String.valueOf(allItems.size()));
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+        }
+    }
 
+    private class CheckHotNewHipHop extends AsyncTask<URL, Void, String>  {
+        private String title = "title";
+        private String link = "url";
+        private String image = "image";
+        private String description = "description";
+        private String urlString = null;
+        private XmlPullParserFactory xmlFactoryObject;
+
+        String notif = "";
+
+        public volatile boolean parsingComplete = true;
+        Context context;
+
+        public CheckHotNewHipHop(String url, Context ctx){
+            this.urlString = url;
+            this.context = ctx;
         }
 
-        @Override
-        protected void onPreExecute() {
+        protected String doInBackground(URL... urls) {
+            try {
+                URL url = new URL(urlString);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+                conn.setReadTimeout(10000 /* milliseconds */);
+                conn.setConnectTimeout(15000 /* milliseconds */);
+                conn.setRequestMethod("GET");
+                conn.setDoInput(true);
+
+                // Starts the query
+                conn.connect();
+                InputStream stream = conn.getInputStream();
+
+                xmlFactoryObject = XmlPullParserFactory.newInstance();
+                XmlPullParser myparser = xmlFactoryObject.newPullParser();
+
+                myparser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
+                myparser.setInput(stream, null);
+
+                parseXMLAndStoreIt(myparser);
+                stream.close();
+            }
+
+            catch (Exception e) {
+            }
+            return "";
+        }
+
+        protected void onPostExecute(String result) {
+            MyPreferences preferences = StoreBox.create(getApplicationContext(), MyPreferences.class);
+            Set<String> allItems = preferences.getArticles() == null ? new LinkedHashSet<String>() : preferences.getArticles();
+
+            if(notif.equals("") || allItems.contains(result))
+                Log.v("benmark", "no meek hhnhh");
+            else{
+                showNotifWithPostOrNah(notif);
+            }
+
+            allItems.add(notif);
+            preferences.setArticles(allItems);
+
+        }
+        public void parseXMLAndStoreIt(XmlPullParser myParser) {
+            int event;
+            String text=null;
+
+            try {
+                event = myParser.getEventType();
+
+                while (event != XmlPullParser.END_DOCUMENT) {
+                    String name=myParser.getName();
+
+                    switch (event){
+                        case XmlPullParser.START_TAG:
+                            break;
+
+                        case XmlPullParser.TEXT:
+                            text = myParser.getText();
+                            break;
+
+                        case XmlPullParser.END_TAG:
+
+                            if(name.equals("title")){
+                                title = text;
+                                if(title.contains("Meek"))
+                                    notif = title;
+                            }
+
+                            else if(name.equals("link")){
+                                link = text;
+                                if(link.contains("Meek"))
+                                    notif = link;
+                            }
+
+                            else if(name.equals("description")){
+                                description = text;
+                            }
+
+                            else{
+                            }
+
+                            break;
+                    }
+
+                    event = myParser.next();
+                }
+
+                parsingComplete = false;
+            }
+
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void showNotifIfNewPicIsPopular(String username, String postId, Set<String> allItems){
+        if(username!=null && !allItems.contains(postId) && (username.equals("champagnepapi") || username.equals("kendalljenner") || username.equals("menacetodennis")
+                || username.equals("instagram") || username.equals("beyonce") || username.equals("kimkardashian")
+                || username.equals("taylorswift") || username.equals("selenagomez") || username.equals("nickiminaj")
+                || username.equals("mileycyrus") || username.equals("katyperry"))) {
+            showNotifWithPostOrNah(username + " just posted IG");
         }
     }
 
@@ -164,8 +272,9 @@ public class InstaService extends WakefulIntentService{
 
         notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
 
-        int SERVER_DATA_RECEIVED = 1;
-        notificationManager.notify(SERVER_DATA_RECEIVED, notification);
+        Random random = new Random();
+        int m = random.nextInt(9999 - 1000) + 1000;
+        notificationManager.notify(m, notification);
     }
 
     private void showNotifWithPostOrNah(String text){
@@ -186,6 +295,32 @@ public class InstaService extends WakefulIntentService{
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         mBuilder.setContentIntent(pendingIntent);
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        notificationManager.notify(0, mBuilder.build());
+        Random random = new Random();
+        int m = random.nextInt(9999 - 1000) + 1000;
+        notificationManager.notify(m, mBuilder.build());
+    }
+
+    private void scheduleNextUpdate()
+    {
+        Intent intent = new Intent(this, this.getClass());
+        PendingIntent pendingIntent =
+                PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        // The update frequency should often be user configurable.  This is not.
+
+        long currentTimeMillis = System.currentTimeMillis();
+        long nextUpdateTimeMillis = currentTimeMillis + 15 * DateUtils.SECOND_IN_MILLIS;
+        Time nextUpdateTime = new Time();
+        nextUpdateTime.set(nextUpdateTimeMillis);
+
+        if (nextUpdateTime.hour < 7 || nextUpdateTime.hour >= 23)
+        {
+            nextUpdateTime.hour = 8;
+            nextUpdateTime.minute = 0;
+            nextUpdateTime.second = 0;
+            nextUpdateTimeMillis = nextUpdateTime.toMillis(false) + DateUtils.DAY_IN_MILLIS;
+        }
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC, nextUpdateTimeMillis, pendingIntent);
     }
 }

@@ -1,5 +1,11 @@
 package com.kidgeniushq.handlers;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -8,6 +14,10 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Random;
+
+import co.kr.ingeni.twitterloginexample.MainActivity;
+import co.kr.ingeni.twitterloginexample.SettingsActivity;
 
 /**
  * Created by benjamin.harvey on 7/31/15.
@@ -19,10 +29,13 @@ public class HandleXML {
     private String description = "description";
     private String urlString = null;
     private XmlPullParserFactory xmlFactoryObject;
-    public volatile boolean parsingComplete = true;
 
-    public HandleXML(String url){
+    public volatile boolean parsingComplete = true;
+    Context context;
+
+    public HandleXML(String url, Context ctx){
         this.urlString = url;
+        this.context = ctx;
     }
 
     public String getTitle(){
@@ -59,17 +72,14 @@ public class HandleXML {
 
                         if(name.equals("title")){
                             title = text;
-                            Log.v("benmark", "Title " + title);
                         }
 
                         else if(name.equals("link")){
                             link = text;
-                            Log.v("benmark", "link " + link);
                         }
 
                         else if(name.equals("description")){
                             description = text;
-                            Log.v("benmark", "description " + description);
                         }
 
                         else{
@@ -122,5 +132,28 @@ public class HandleXML {
             }
         });
         thread.start();
+    }
+
+    private void showNotifWithPostOrNah(String text){
+        Intent deleteIntent = new Intent(context, SettingsActivity.class);
+        PendingIntent pendingIntentCancel = PendingIntent.getBroadcast(context, 0, deleteIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        //building the notification
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
+                .setSmallIcon(android.R.drawable.ic_menu_upload)
+                .setContentTitle(text)
+                .setTicker(text)
+                .setColor(Color.RED)
+                .addAction(android.R.drawable.sym_action_email, "Post Now", pendingIntentCancel)
+                .addAction(android.R.drawable.ic_menu_close_clear_cancel, "Cancel Upload", pendingIntentCancel);
+
+        Intent notificationIntent = new Intent(context, MainActivity.class);
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        mBuilder.setContentIntent(pendingIntent);
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
+        Random random = new Random();
+        int m = random.nextInt(9999 - 1000) + 1000;
+        notificationManager.notify(m, mBuilder.build());
     }
 }
