@@ -21,6 +21,7 @@ import com.kidgeniushq.adapters.UsersAdapter;
 import com.kidgeniushq.asynctasks.GetInstagramImagesAsync;
 import com.kidgeniushq.asynctasks.GetTweetsAsync;
 import com.kidgeniushq.instagram.InstagramApp;
+import com.kidgeniushq.services.InstaService;
 import com.kidgeniushq.twitter.TwitterLogin;
 import com.melnykov.fab.FloatingActionButton;
 import com.squareup.picasso.Picasso;
@@ -98,6 +99,9 @@ public class MainActivity extends Activity {
 		}
 		mApp = new InstagramApp(this, client_id, client_secret, callback_url);
 		if(mApp.hasAccessToken()){
+
+			startService(new Intent(getApplicationContext(), InstaService.class));
+
 			Toast.makeText(getApplicationContext(), "got ig images", Toast.LENGTH_SHORT).show();
 			URL url;
 			try {

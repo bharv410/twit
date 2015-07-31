@@ -23,7 +23,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int fab_colorDisabled=0x7f010003;
+        public static final int fab_colorDisabled=0x7f010005;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -32,7 +32,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int fab_colorNormal=0x7f010001;
+        public static final int fab_colorNormal=0x7f010003;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -41,7 +41,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int fab_colorPressed=0x7f010000;
+        public static final int fab_colorPressed=0x7f010002;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -50,7 +50,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int fab_colorRipple=0x7f010002;
+        public static final int fab_colorRipple=0x7f010004;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -58,7 +58,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int fab_shadow=0x7f010004;
+        public static final int fab_shadow=0x7f010006;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -69,7 +69,29 @@ containing a value of this type.
 <tr><td><code>mini</code></td><td>1</td><td></td></tr>
 </table>
          */
-        public static final int fab_type=0x7f010005;
+        public static final int fab_type=0x7f010007;
+        /** <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>vertical</code></td><td>0</td><td></td></tr>
+<tr><td><code>horizontal</code></td><td>1</td><td></td></tr>
+</table>
+         */
+        public static final int orientation=0x7f010000;
+        /** <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>glow</code></td><td>0</td><td></td></tr>
+<tr><td><code>rubber_band</code></td><td>1</td><td></td></tr>
+</table>
+         */
+        public static final int overFlipMode=0x7f010001;
     }
     public static final class color {
         public static final int background=0x7f080000;
@@ -121,31 +143,35 @@ containing a value of this type.
         public static final int twitter_btn=0x7f02000e;
     }
     public static final class id {
-        public static final int action_settings=0x7f0b0018;
-        public static final int backBtn=0x7f0b000b;
-        public static final int fab=0x7f0b0008;
-        public static final int genre=0x7f0b0015;
-        public static final int list=0x7f0b0003;
-        public static final int mini=0x7f0b0000;
-        public static final int normal=0x7f0b0001;
-        public static final int rating=0x7f0b0014;
-        public static final int releaseYear=0x7f0b0016;
-        public static final int textView=0x7f0b0005;
-        public static final int textView2=0x7f0b000a;
-        public static final int text_count=0x7f0b000f;
-        public static final int thumbnail=0x7f0b0012;
-        public static final int title=0x7f0b0013;
-        public static final int todImageView=0x7f0b0007;
-        public static final int todText=0x7f0b0006;
-        public static final int todTitleTextView=0x7f0b0009;
-        public static final int tweetofthedaylayout=0x7f0b0004;
-        public static final int twitter_edit_txt=0x7f0b0011;
-        public static final int twitter_login_btn=0x7f0b0002;
-        public static final int twitter_name=0x7f0b000d;
-        public static final int twitter_profile_image=0x7f0b000c;
-        public static final int twitter_screen_name=0x7f0b000e;
-        public static final int twitter_web_view=0x7f0b0017;
-        public static final int twitter_write_btn=0x7f0b0010;
+        public static final int action_settings=0x7f0b001c;
+        public static final int backBtn=0x7f0b000f;
+        public static final int fab=0x7f0b000c;
+        public static final int genre=0x7f0b0019;
+        public static final int glow=0x7f0b0002;
+        public static final int horizontal=0x7f0b0000;
+        public static final int list=0x7f0b0007;
+        public static final int mini=0x7f0b0004;
+        public static final int normal=0x7f0b0005;
+        public static final int rating=0x7f0b0018;
+        public static final int releaseYear=0x7f0b001a;
+        public static final int rubber_band=0x7f0b0003;
+        public static final int textView=0x7f0b0009;
+        public static final int textView2=0x7f0b000e;
+        public static final int text_count=0x7f0b0013;
+        public static final int thumbnail=0x7f0b0016;
+        public static final int title=0x7f0b0017;
+        public static final int todImageView=0x7f0b000b;
+        public static final int todText=0x7f0b000a;
+        public static final int todTitleTextView=0x7f0b000d;
+        public static final int tweetofthedaylayout=0x7f0b0008;
+        public static final int twitter_edit_txt=0x7f0b0015;
+        public static final int twitter_login_btn=0x7f0b0006;
+        public static final int twitter_name=0x7f0b0011;
+        public static final int twitter_profile_image=0x7f0b0010;
+        public static final int twitter_screen_name=0x7f0b0012;
+        public static final int twitter_web_view=0x7f0b001b;
+        public static final int twitter_write_btn=0x7f0b0014;
+        public static final int vertical=0x7f0b0001;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -214,6 +240,55 @@ containing a value of this type.
         public static final int pref_notification=0x7f040003;
     }
     public static final class styleable {
+        /** Attributes that can be used with a FlipView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #FlipView_orientation co.kr.ingeni.twitterloginexample:orientation}</code></td><td></td></tr>
+           <tr><td><code>{@link #FlipView_overFlipMode co.kr.ingeni.twitterloginexample:overFlipMode}</code></td><td></td></tr>
+           </table>
+           @see #FlipView_orientation
+           @see #FlipView_overFlipMode
+         */
+        public static final int[] FlipView = {
+            0x7f010000, 0x7f010001
+        };
+        /**
+          <p>This symbol is the offset where the {@link co.kr.ingeni.twitterloginexample.R.attr#orientation}
+          attribute's value can be found in the {@link #FlipView} array.
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>vertical</code></td><td>0</td><td></td></tr>
+<tr><td><code>horizontal</code></td><td>1</td><td></td></tr>
+</table>
+          @attr name co.kr.ingeni.twitterloginexample:orientation
+        */
+        public static final int FlipView_orientation = 0;
+        /**
+          <p>This symbol is the offset where the {@link co.kr.ingeni.twitterloginexample.R.attr#overFlipMode}
+          attribute's value can be found in the {@link #FlipView} array.
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>glow</code></td><td>0</td><td></td></tr>
+<tr><td><code>rubber_band</code></td><td>1</td><td></td></tr>
+</table>
+          @attr name co.kr.ingeni.twitterloginexample:overFlipMode
+        */
+        public static final int FlipView_overFlipMode = 1;
         /** Attributes that can be used with a FloatingActionButton.
            <p>Includes the following attributes:</p>
            <table>
@@ -235,8 +310,8 @@ containing a value of this type.
            @see #FloatingActionButton_fab_type
          */
         public static final int[] FloatingActionButton = {
-            0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003,
-            0x7f010004, 0x7f010005
+            0x7f010002, 0x7f010003, 0x7f010004, 0x7f010005,
+            0x7f010006, 0x7f010007
         };
         /**
           <p>This symbol is the offset where the {@link co.kr.ingeni.twitterloginexample.R.attr#fab_colorDisabled}
