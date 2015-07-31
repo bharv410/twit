@@ -5,11 +5,13 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.kidgeniushq.handlers.HandleXML;
 import com.kidgeniushq.instagram.InstagramApp;
 import com.kidgeniushq.interfaces.MyPreferences;
 
@@ -47,12 +49,28 @@ public class InstaService extends WakefulIntentService{
     private InstagramApp mApp;
     private InstagramApp.OAuthAuthenticationListener listener;
 
+    private String finalUrl="http://feeds.feedburner.com/realhotnewhiphop.xml";
+    private HandleXML obj;
+
     public InstaService() {
         super("InstaService");
     }
 
     @Override
     protected void onHandleIntent(Intent intent) {
+        //get hotnewhh
+        obj = new HandleXML(finalUrl);
+        obj.fetchXML();
+
+        Log.v("benmark", "obj.title " + obj.getTitle());
+
+
+
+
+
+
+
+        //get ig
         mApp = new InstagramApp(this, client_id, client_secret, callback_url);
         if(mApp.hasAccessToken()){
             Toast.makeText(getApplicationContext(), "got ig images", Toast.LENGTH_SHORT).show();
@@ -110,7 +128,7 @@ public class InstaService extends WakefulIntentService{
                             || username.equals("taylorswift") || username.equals("selenagomez") || username.equals("nickiminaj")
                             || username.equals("mileycyrus") || username.equals("katyperry")) {
                         allItems.add(jsonArr.getJSONObject(i).getJSONObject("images").getJSONObject("low_resolution").getString("url"));
-                        showNotifWithPostOrNah("New IG photo from " + username);
+                        showNotifWithPostOrNah(username + " just posted IG");
                     }
                 }
                 preferences.setIGPosts(allItems);
@@ -159,6 +177,7 @@ public class InstaService extends WakefulIntentService{
                 .setSmallIcon(android.R.drawable.ic_menu_upload)
                 .setContentTitle(text)
                 .setTicker(text)
+                .setColor(Color.RED)
                 .addAction(android.R.drawable.sym_action_email, "Post Now", pendingIntentCancel)
                 .addAction(android.R.drawable.ic_menu_close_clear_cancel, "Cancel Upload", pendingIntentCancel);
 
