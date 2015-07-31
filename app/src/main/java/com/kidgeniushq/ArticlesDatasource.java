@@ -47,7 +47,7 @@ public class ArticlesDatasource {// Database fields
         cursor.moveToFirst();
         HNHHArticle newComment = cursorToComment(cursor);
         cursor.close();
-        return new HNHHArticle(title, url, description, insertId);
+        return newComment;
     }
 
     public void deleteArticle(HNHHArticle article) {
