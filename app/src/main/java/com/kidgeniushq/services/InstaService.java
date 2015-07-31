@@ -209,8 +209,8 @@ public class InstaService extends WakefulIntentService{
             Set<String> allItems = preferences.getArticles() == null ? new LinkedHashSet<String>() : preferences.getArticles();
 
             for(HNHHArticle article : result){
-                if(article.getCaption().contains("Meek") && ){
-                    showNotifWithPostOrNah(article.getCaption());
+                if(article.getCaption().contains("Meek")){
+                    showNotifWithPostOrNah(articlesDatasource.createArticle(article.getCaption(), article.getInfo(), article.getLink()).getCaption());
                 }
             }
 
