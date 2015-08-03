@@ -22,6 +22,7 @@ import com.kidgeniushq.asynctasks.GetInstagramImagesAsync;
 import com.kidgeniushq.asynctasks.GetTweetsAsync;
 import com.kidgeniushq.instagram.InstagramApp;
 import com.kidgeniushq.services.InstaService;
+import com.kidgeniushq.staticstuff.MainCentralData;
 import com.kidgeniushq.twitter.TwitterLogin;
 import com.melnykov.fab.FloatingActionButton;
 import com.squareup.picasso.Picasso;
@@ -85,6 +86,8 @@ public class MainActivity extends Activity {
 		tweetOfTheDayLayout.setVisibility(View.VISIBLE);
 		todTextView.setVisibility(View.VISIBLE);
 		todTextView.setTextColor(Color.BLUE);
+
+		MainCentralData.loadAllIGPosts();
 	}
 	
 	@Override

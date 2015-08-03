@@ -88,15 +88,15 @@ public class InstaService extends WakefulIntentService{
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        articlesDatasource = new ArticlesDatasource(this);
-        try{
-            articlesDatasource.open();
-            List<HNHHArticle> values = articlesDatasource.getAllArticles();
-            for(HNHHArticle article : values){
-                Log.v("benmark", "article = " + article.getCaption());
-            }
-        }catch (SQLException e){
-        }
+//        articlesDatasource = new ArticlesDatasource(this);
+//        try{
+//            articlesDatasource.open();
+//            List<HNHHArticle> values = articlesDatasource.getAllArticles();
+//            for(HNHHArticle article : values){
+//                Log.v("benmark", "article = " + article.getCaption());
+//            }
+//        }catch (SQLException e){
+//        }
 
 
         checkHotNewHipHop();
@@ -181,12 +181,15 @@ public class InstaService extends WakefulIntentService{
         public volatile boolean parsingComplete = true;
         Context context;
 
+        private List<String> titles;
+
         public CheckHotNewHipHop(String url, Context ctx){
             this.urlString = url;
             this.context = ctx;
         }
 
         protected Boolean doInBackground(URL... urls) {
+            titles = new ArrayList<String>();
             try {
                 URL url = new URL(urlString);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -278,15 +281,20 @@ public class InstaService extends WakefulIntentService{
                             testObject.put("description", description);
                         if(urlString!=null)
                             testObject.put("url", urlString);
-                    testObject.saveInBackground(new SaveCallback() {
-                        @Override
-                        public void done(ParseException e) {
-                            if (e == null)
-                                Log.v("benmark", "saved " + title);
-                            else
-                                Log.v("benmark", "error saving " + e.getLocalizedMessage() + "error corde = " + String.valueOf(e.getCode()));
-                        }
-                    });
+                    if(!titles.contains(title)){
+                        testObject.saveInBackground(new SaveCallback() {
+                            @Override
+                            public void done(ParseException e) {
+                                titles.add(title);
+                                if (e == null)
+                                    Log.v("benmark", "saved " + title);
+                                else
+                                    Log.v("benmark", "error saving " + e.getLocalizedMessage() + "error corde = " + String.valueOf(e.getCode()));
+                            }
+                        });
+                    }else{
+                        Log.v("benmark", "skipping duplicate of " + title);
+                    }
                         event = myParser.next();
                 }
 
