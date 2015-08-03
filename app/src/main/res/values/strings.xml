@@ -9,5 +9,6 @@
 	<string name="login_button_url">https://g.twimg.com/dev/sites/default/files/images_documentation/sign-in-with-twitter-gray.png</string>
 	<string name="title_section2">Section 2</string>
 	<string name="title_section3">Section 3</string>
+	<string name="title_activity_notif_to_parse">NotifToParseActivity</string>
 
 </resources>

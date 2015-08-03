@@ -34,17 +34,21 @@ uses-permission#android.permission.INTERNET
 ADDED from AndroidManifest.xml:9:5
 	android:name
 		ADDED from AndroidManifest.xml:9:22
-android:uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from AndroidManifest.xml:10:5
+	android:name
+		ADDED from AndroidManifest.xml:10:22
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
 ADDED from AndroidManifest.xml:11:5
 	android:maxSdkVersion
 		ADDED from AndroidManifest.xml:13:9
 	android:name
 		ADDED from AndroidManifest.xml:12:9
-android:uses-permission#android.permission.READ_PHONE_STATE
+uses-permission#android.permission.READ_PHONE_STATE
 ADDED from AndroidManifest.xml:14:5
 	android:name
-		ADDED from AndroidManifest.xml:14:30
-android:uses-permission#android.permission.READ_EXTERNAL_STORAGE
+		ADDED from AndroidManifest.xml:14:22
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
 ADDED from AndroidManifest.xml:15:5
 	android:maxSdkVersion
 		ADDED from AndroidManifest.xml:17:9
@@ -76,9 +80,9 @@ MERGED from com.android.support:support-v4:22.2.0:22:5
 	android:theme
 		ADDED from AndroidManifest.xml:26:9
 service#com.kidgeniushq.services.InstaService
-ADDED from AndroidManifest.xml:28:9
+ADDED from AndroidManifest.xml:27:9
 	android:name
-		ADDED from AndroidManifest.xml:28:18
+		ADDED from AndroidManifest.xml:27:18
 activity#co.kr.ingeni.twitterloginexample.MainActivity
 ADDED from AndroidManifest.xml:29:9
 	android:label
@@ -141,6 +145,12 @@ ADDED from AndroidManifest.xml:60:9
 		ADDED from AndroidManifest.xml:62:13
 	android:name
 		ADDED from AndroidManifest.xml:61:13
+activity#com.kidgeniushq.NotifToParseActivity
+ADDED from AndroidManifest.xml:64:9
+	android:label
+		ADDED from AndroidManifest.xml:66:13
+	android:name
+		ADDED from AndroidManifest.xml:65:13
 activity#android.support.v7.widget.TestActivity
 ADDED from com.android.support:recyclerview-v7:21.0.3:18:9
 	android:label

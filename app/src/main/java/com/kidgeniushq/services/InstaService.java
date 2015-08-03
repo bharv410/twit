@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteConstraintException;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.kidgeniushq.ArticlesDatasource;
+import com.kidgeniushq.NotifToParseActivity;
 import com.kidgeniushq.handlers.HandleXML;
 import com.kidgeniushq.instagram.InstagramApp;
 import com.kidgeniushq.interfaces.MyPreferences;
@@ -131,28 +133,33 @@ public class InstaService extends WakefulIntentService{
 
                 JSONObject jsonObj = (JSONObject) new JSONTokener(response).nextValue();
                 jsonArr = jsonObj.getJSONArray("data");
+                return jsonArr.length();
             } catch (Exception ex) {
                 ex.printStackTrace();
+                return 0;
             }
-            return jsonArr.length();
         }
 
         protected void onPostExecute(Integer result) {
-            MyPreferences preferences = StoreBox.create(getApplicationContext(), MyPreferences.class);
-            Set<String> allItems = preferences.getIGPosts() == null ? new LinkedHashSet<String>() : preferences.getIGPosts();
-            Set<String> items = new LinkedHashSet<String>();
-            try {
-                for (int i = 0; i < jsonArr.length(); i++) {
-                    InstagramPost igpost = new InstagramPost(jsonArr.getJSONObject(i));
-                    items.add(igpost.getPostId());
-                    showNotifIfNewPicIsPopular(igpost.getUsername(), igpost.getPostId(), allItems);
-                    allItems.add(igpost.getPostId());
+            if (jsonArr != null) {
+                MyPreferences preferences = StoreBox.create(getApplicationContext(), MyPreferences.class);
+                Set<String> allItems = preferences.getIGPosts() == null ? new LinkedHashSet<String>() : preferences.getIGPosts();
+                Set<String> items = new LinkedHashSet<String>();
+                try {
+                    for (int i = 0; i < jsonArr.length(); i++) {
+                        InstagramPost igpost = new InstagramPost(jsonArr.getJSONObject(i));
+                        items.add(igpost.getPostId());
+                        showNotifIfNewPicIsPopular(igpost.getUsername(), igpost.getPostId(), allItems);
+                        allItems.add(igpost.getPostId());
+                    }
+
+                    preferences.setIGPosts(allItems);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-
-                preferences.setIGPosts(allItems);
-
-            } catch (JSONException e) {
-                e.printStackTrace();
+            }else{
+                Toast.makeText(getApplicationContext(), "No popular igs found", Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -210,7 +217,7 @@ public class InstaService extends WakefulIntentService{
 
             for(HNHHArticle article : result){
                 if(article.getCaption().contains("Meek")){
-                    showNotifWithPostOrNah(articlesDatasource.createArticle(article.getCaption(), article.getInfo(), article.getLink()).getCaption());
+                    showNotifWithPostOrNah(articlesDatasource.createArticle(article.getCaption(), article.getInfo(), article.getLink()).getCaption(), true, "HotNewHipHop");
                 }
             }
 
@@ -261,8 +268,12 @@ public class InstaService extends WakefulIntentService{
                             articles.add(thisArticle);
                             break;
                     }
-                   HNHHArticle justAdded = articlesDatasource.createArticle(thisArticle.getCaption(), thisArticle.getLink(), thisArticle.getInfo());
-                    event = myParser.next();
+                    try {
+                        HNHHArticle justAdded = articlesDatasource.createArticle(thisArticle.getCaption(), thisArticle.getLink(), thisArticle.getInfo());
+                    }catch (SQLiteConstraintException sqe){
+                        Log.v("benmark", "duplicate article");
+                    }
+                        event = myParser.next();
                 }
 
                 parsingComplete = false;
@@ -284,7 +295,7 @@ public class InstaService extends WakefulIntentService{
                 || username.equals("instagram") || username.equals("beyonce") || username.equals("kimkardashian")
                 || username.equals("taylorswift") || username.equals("selenagomez") || username.equals("nickiminaj")
                 || username.equals("mileycyrus") || username.equals("katyperry"))) {
-            showNotifWithPostOrNah(username + " just posted IG");
+            showNotifWithPostOrNah(username + " just posted IG", false, "instagram");
         }
     }
 
@@ -310,9 +321,12 @@ public class InstaService extends WakefulIntentService{
         notificationManager.notify(m, notification);
     }
 
-    private void showNotifWithPostOrNah(String text){
-        Intent deleteIntent = new Intent(this, SettingsActivity.class);
-        PendingIntent pendingIntentCancel = PendingIntent.getBroadcast(this, 0, deleteIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+    private void showNotifWithPostOrNah(String text, boolean isArticle, String postVia){
+        Intent sendToParse = new Intent(this, NotifToParseActivity.class);
+        sendToParse.putExtra("isArticle", isArticle);
+        sendToParse.putExtra("postvia", postVia);
+        sendToParse.putExtra("postText", text);
+        PendingIntent pendingIntentPost = PendingIntent.getBroadcast(this, 0, sendToParse, PendingIntent.FLAG_UPDATE_CURRENT);
 
         //building the notification
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
@@ -320,8 +334,8 @@ public class InstaService extends WakefulIntentService{
                 .setContentTitle(text)
                 .setTicker(text)
                 .setColor(Color.RED)
-                .addAction(android.R.drawable.sym_action_email, "Post Now", pendingIntentCancel)
-                .addAction(android.R.drawable.ic_menu_close_clear_cancel, "Cancel Upload", pendingIntentCancel);
+                .addAction(android.R.drawable.sym_action_email, "Post Now", pendingIntentPost)
+                .addAction(android.R.drawable.ic_menu_close_clear_cancel, "Cancel Upload", pendingIntentPost);
 
         Intent notificationIntent = new Intent(this, MainActivity.class);
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);

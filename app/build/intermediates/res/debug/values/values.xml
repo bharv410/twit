@@ -114,6 +114,11 @@
     <string name="pref_title_sync_frequency">Sync frequency</string>
     <string name="pref_title_system_sync_settings">System sync settings</string>
     <string name="pref_title_vibrate">Vibrate</string>
+    <!-- From: file:/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="title_activity_notif_to_parse">NotifToParseActivity</string>
+    <!-- From: file:/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/values/strings_activity_settings.xml -->
+    <eat-comment/>
     <string name="title_activity_settings">Settings</string>
     <!-- From: file:/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/values/strings.xml -->
     <eat-comment/>

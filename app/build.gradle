@@ -30,5 +30,7 @@ dependencies {
 
     //flipview
     compile 'se.emilsjolander:android-flipview:1.1.0'
+    compile 'com.parse.bolts:bolts-android:1.+'
+    compile fileTree(dir: 'libs', include: 'Parse-*.jar')
 
 }

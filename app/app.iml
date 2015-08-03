@@ -92,16 +92,18 @@
     <orderEntry type="jdk" jdkName="Android API 19 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="library-2.4.0" level="project" />
-    <orderEntry type="library" exported="" name="typetools-0.4.1" level="project" />
     <orderEntry type="library" exported="" name="universal-image-loader-1.9.3-with-sources" level="project" />
-    <orderEntry type="library" exported="" name="recyclerview-v7-21.0.3" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-22.2.0" level="project" />
     <orderEntry type="library" exported="" name="support-v4-22.2.0" level="project" />
+    <orderEntry type="library" exported="" name="picasso-2.3.2" level="project" />
+    <orderEntry type="library" exported="" name="floatingactionbutton-1.3.0" level="project" />
+    <orderEntry type="library" exported="" name="typetools-0.4.1" level="project" />
+    <orderEntry type="library" exported="" name="recyclerview-v7-21.0.3" level="project" />
     <orderEntry type="library" exported="" name="support-v13-22.2.0" level="project" />
     <orderEntry type="library" exported="" name="android-flipview-1.1.0" level="project" />
-    <orderEntry type="library" exported="" name="picasso-2.3.2" level="project" />
     <orderEntry type="library" exported="" name="storebox-lib-1.3.0" level="project" />
-    <orderEntry type="library" exported="" name="floatingactionbutton-1.3.0" level="project" />
+    <orderEntry type="library" exported="" name="Parse-1.9.4" level="project" />
+    <orderEntry type="library" exported="" name="bolts-android-1.2.0" level="project" />
     <orderEntry type="library" exported="" name="twitter4j-core-4.0.2" level="project" />
   </component>
 </module>
