@@ -112,6 +112,10 @@ public class InstaService extends WakefulIntentService{
     }
     private void checkOtherSites(){
         new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(1), this).execute();
+        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(2), this).execute();
+        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(3), this).execute();
+        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(4), this).execute();
+        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(5), this).execute();
 //        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(2), this).execute();
 //        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(3), this).execute();
 //        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(4), this).execute();
@@ -296,6 +300,7 @@ public class InstaService extends WakefulIntentService{
                             testObject.put("postUrl", urlString);
 
                     if(!titles.contains(title)){
+                        titles.add(title);
                         testObject.saveInBackground(new SaveCallback() {
                             @Override
                             public void done(ParseException e) {
@@ -303,7 +308,6 @@ public class InstaService extends WakefulIntentService{
                                     Log.v("benmark", "saved!");
                                 else
                                     Log.v("benmark", "error!" + String.valueOf(e.getCode()));
-                                titles.add(title);
                             }
                         });
                     }else{
