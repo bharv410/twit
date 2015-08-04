@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.kidgeniushq.importantlists.ExampleListFragment;
 import com.kidgeniushq.importantlists.InstagramAdminFragment;
+import com.kidgeniushq.importantlists.TweetsFragment;
 
 
 public class RealImportantActivity extends Activity implements ActionBar.TabListener {
@@ -106,6 +107,8 @@ public class RealImportantActivity extends Activity implements ActionBar.TabList
         public Fragment getItem(int position) {
             if(position==3 || position==1)
                 return new InstagramAdminFragment();
+            else if(position==2)
+                return new TweetsFragment();
             else
                 return new ExampleListFragment();
         }
