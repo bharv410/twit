@@ -13,7 +13,6 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:textAppearance="?android:attr/textAppearanceLarge"
-		android:layout_alignBottom="@+id/itemImage"
 		android:layout_alignParentRight="true"
 		android:layout_alignTop="@+id/itemImage"
 		android:layout_toRightOf="@+id/itemImage"
@@ -25,6 +24,6 @@
 		android:textAppearance="?android:attr/textAppearanceSmall"
 		android:text="Small Text"
 		android:id="@+id/itemSmallText"
-		android:layout_alignBottom="@+id/itemImage"
+		android:layout_below="@+id/itemBigText"
 		android:layout_toRightOf="@+id/itemImage"/>
 </RelativeLayout><!-- From: file:/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/layout/iglistitem.xml -->

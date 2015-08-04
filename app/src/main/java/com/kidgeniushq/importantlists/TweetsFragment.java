@@ -1,15 +1,18 @@
 package com.kidgeniushq.importantlists;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ListFragment;
 import android.content.ContentUris;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Contacts;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,12 +58,42 @@ public class TweetsFragment  extends ListFragment {
     public void onActivityCreated(Bundle savedState) {
         super.onActivityCreated(savedState);
 
-        getListView().setOnItemLongClickListener(new OnItemLongClickListener() {
+        getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
             @Override
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-                                           int arg2, long arg3) {
-                Toast.makeText(getActivity(), "longclicked  "+ textArray.get(arg2), Toast.LENGTH_LONG).show();
+                                           final int arg2, long arg3) {
+                new AlertDialog.Builder(getActivity())
+                        .setTitle("Delete entry")
+                        .setMessage("Are you sure you want to delete this entry?")
+                        .setPositiveButton("post", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(getActivity(), "right now it shows eerything not deleted", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setNegativeButton("delete", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                ParseQuery<ParseObject> query = ParseQuery.getQuery("Tweets");
+                                query.whereEqualTo("postUniqueId", linkArray.get(arg2));
+                                query.findInBackground(new FindCallback<ParseObject>() {
+                                    @Override
+                                    public void done(List<ParseObject> list, ParseException e) {
+                                        if(e==null){
+                                            for(ParseObject po : list){
+                                                try {
+                                                    po.delete();
+                                                    onStart();
+                                                }catch (ParseException pe){
+                                                    Log.v("benmark", "error deleting + }" + String.valueOf(pe.getCode()));
+                                                }
+                                            }
+                                        }
+                                    }
+                                });
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
                 return true;
             }
         });

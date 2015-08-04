@@ -1,11 +1,14 @@
 package com.kidgeniushq.importantlists;
 
+import android.app.AlertDialog;
 import android.app.ListFragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +20,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
+import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.SaveCallback;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -33,6 +38,9 @@ import co.kr.ingeni.twitterloginexample.R;
 public class InstagramAdminFragment extends ListFragment {
     ArrayList<String> linkArray;
     ArrayList<String> photoArray;
+    ArrayList<String> captionsArray;
+    ArrayList<String> usernamesArray;
+    ArrayList<String> urlArray;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
@@ -52,8 +60,38 @@ public class InstagramAdminFragment extends ListFragment {
 
             @Override
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-                                           int arg2, long arg3) {
-                Toast.makeText(getActivity(), "longclicked  " + linkArray.get(arg2), Toast.LENGTH_LONG).show();
+                                           final int arg2, long arg3) {
+                new AlertDialog.Builder(getActivity())
+                        .setTitle("Delete entry")
+                        .setMessage("Are you sure you want to delete this entry?")
+                        .setPositiveButton("post", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(getActivity(), "right now it shows eerything not deleted", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setNegativeButton("delete", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                ParseQuery<ParseObject> query = ParseQuery.getQuery("Instagram");
+                                query.whereEqualTo("postId", linkArray.get(arg2));
+                                query.findInBackground(new FindCallback<ParseObject>() {
+                                    @Override
+                                    public void done(List<ParseObject> list, ParseException e) {
+                                        if(e==null){
+                                            for(ParseObject po : list){
+                                                try {
+                                                    po.delete();
+                                                    onStart();
+                                                }catch (ParseException pe){
+                                                    Log.v("benmark","error deleting + }" + String.valueOf(pe.getCode()));
+                                                }
+                                            }
+                                        }
+                                    }
+                                });
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
                 return true;
             }
         });
@@ -63,6 +101,9 @@ public class InstagramAdminFragment extends ListFragment {
         super.onStart();
         linkArray = new ArrayList<String>();
         photoArray = new ArrayList<String>();
+        captionsArray = new ArrayList<String>();
+        usernamesArray = new ArrayList<String>();
+        urlArray = new ArrayList<String>();
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Instagram");
         query.findInBackground(new FindCallback<ParseObject>() {
@@ -71,8 +112,11 @@ public class InstagramAdminFragment extends ListFragment {
                     for (ParseObject po : objects) {
                         linkArray.add(po.getString("postId"));
                         photoArray.add(po.getString("imageUrl"));
+                        usernamesArray.add(po.getString("username"));
+                        captionsArray.add(po.getString("captionText"));
+                        urlArray.add(po.getString("link"));
                     }
-                    MySimpleArrayAdapter a = new MySimpleArrayAdapter(getActivity(), linkArray, photoArray);
+                    MySimpleArrayAdapter a = new MySimpleArrayAdapter(getActivity(), usernamesArray, photoArray, captionsArray);
                     //ArrayAdapter<String> a = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, linkArray);
                     setListAdapter(a);
                 }
@@ -82,20 +126,19 @@ public class InstagramAdminFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        String postId = linkArray.get(position);
-        String url = "https://instagram.com/p/" + postId;
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(urlArray.get(position))));
     }
 
     public class MySimpleArrayAdapter extends ArrayAdapter<String> {
         private final Context context;
-        private final List<String> values, values2;
+        private final List<String> values, values2, values3;
 
-        public MySimpleArrayAdapter(Context context, List<String>  values, List<String>  values2) {
+        public MySimpleArrayAdapter(Context context, List<String>  values, List<String>  values2, List<String>  values3) {
             super(context, -1, values);
             this.context = context;
             this.values = values;
             this.values2 = values2;
+            this.values3 = values3;
         }
 
         @Override
@@ -112,7 +155,7 @@ public class InstagramAdminFragment extends ListFragment {
             Picasso.with(context).load(values2.get(position)).into(imageView);
 
             textView.setText(values.get(position));
-            otherTextView.setText("");
+            otherTextView.setText(values3.get(position));
 
             return rowView;
         }
