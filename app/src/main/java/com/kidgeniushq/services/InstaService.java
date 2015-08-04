@@ -65,7 +65,7 @@ public class InstaService extends WakefulIntentService{
     private final String client_id = "49fcbbb3abe9448798d8849806da6cd4";
     private final String client_secret = "424a0cc8965a4f7da7c73897fb90b810";
     private final String callback_url = "http://phantom.com";
-    private final String TAGSELFIE_URL = "https://api.instagram.com/v1/media/popular";
+    private final String TAGSELFIE_URL = "https://api.instagram.com/v1/users/self/feed";
     private static final String SHARED = "Instagram_Preferences";
     private static final String API_ACCESS_TOKEN = "access_token";
 
@@ -74,8 +74,6 @@ public class InstaService extends WakefulIntentService{
 
     private String finalUrl="http://feeds.feedburner.com/realhotnewhiphop.xml";
     private HandleXML obj;
-
-    private ArticlesDatasource articlesDatasource;
 
     public InstaService() {
         super("InstaService");
@@ -89,16 +87,6 @@ public class InstaService extends WakefulIntentService{
 
     @Override
     protected void onHandleIntent(Intent intent) {
-//        articlesDatasource = new ArticlesDatasource(this);
-//        try{
-//            articlesDatasource.open();
-//            List<HNHHArticle> values = articlesDatasource.getAllArticles();
-//            for(HNHHArticle article : values){
-//                Log.v("benmark", "article = " + article.getCaption());
-//            }
-//        }catch (SQLException e){
-//        }
-
 
         checkHotNewHipHop();
         checkOtherSites();
@@ -134,6 +122,8 @@ public class InstaService extends WakefulIntentService{
                 e.printStackTrace();
             }
         }else{
+            Toast.makeText(getApplicationContext(), "Not logged in IG. cant get in background", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Not logged in IG. cant get in background", Toast.LENGTH_LONG).show();
         }
     }
 

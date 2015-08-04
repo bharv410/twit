@@ -90,6 +90,7 @@ public class MainActivity extends Activity {
 		MainCentralData.loadAllHNHHArticles();
 
 		startActivity(new Intent(this, RealImportantActivity.class));
+		startService(new Intent(getApplicationContext(), InstaService.class));
 	}
 	
 	@Override
@@ -101,16 +102,12 @@ public class MainActivity extends Activity {
 					"loading friends", true);
 			//new GetFollowingAsync(MainActivity.this).execute();
 			new GetTweetsAsync(MainActivity.this).execute();
-		}
-		mApp = new InstagramApp(this, client_id, client_secret, callback_url);
-		if(mApp.hasAccessToken()){
-
-			startService(new Intent(getApplicationContext(), InstaService.class));
-
 		}else{
-			todTextView.setText("Connect your IG to see photo here");
-			todTextView.setTextColor(Color.RED);
+			Toast.makeText(getApplicationContext(), "Not logged in twitter. cant get in background", Toast.LENGTH_LONG).show();
+			Toast.makeText(getApplicationContext(), "Not logged in twitter. cant get in background", Toast.LENGTH_LONG).show();
+
 		}
+
 	}
 
 	public void setFollowing(ArrayList<User> following){

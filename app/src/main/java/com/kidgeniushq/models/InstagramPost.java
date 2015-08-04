@@ -52,7 +52,7 @@ public class InstagramPost {
             this.likes = postInJSON.getJSONObject("likes").getInt("count");
             testObject.put("likes", likes);
 
-            if(MainCentralData.allInstagramSourceNames.contains(user)){
+            Log.v("benmark", "post user = " + user);
                 testObject.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(ParseException e) {
@@ -62,7 +62,6 @@ public class InstagramPost {
                             Log.v("benmark", "error saving " + e.getLocalizedMessage() + "error corde = " + String.valueOf(e.getCode()));
                     }
                 });
-            }
         }catch (JSONException jse){
         }
     }

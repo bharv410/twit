@@ -106,6 +106,7 @@ public class InstagramAdminFragment extends ListFragment {
         urlArray = new ArrayList<String>();
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Instagram");
+        query.addDescendingOrder("createdAt");
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, ParseException e) {
                 if (e == null) {
