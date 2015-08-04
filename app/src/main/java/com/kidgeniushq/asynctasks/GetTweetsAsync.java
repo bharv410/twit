@@ -47,8 +47,7 @@ public class GetTweetsAsync extends AsyncTask<Void, Void, ArrayList<twitter4j.St
             testObject.put("postText", tweets.get(i).getText());
             testObject.put("username", tweets.get(i).getUser().getScreenName());
             testObject.put("imageUrl", tweets.get(i).getSource());
-            if(tweets.get(i).getMediaEntities()[0].getMediaURL()!=null)
-                testObject.put("imageUrl",tweets.get(i).getMediaEntities()[0].getMediaURL() );
+//            t
              testObject.saveInBackground(new SaveCallback() {
                  @Override
                  public void done(ParseException e) {
