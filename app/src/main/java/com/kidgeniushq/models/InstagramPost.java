@@ -2,6 +2,7 @@ package com.kidgeniushq.models;
 
 import android.util.Log;
 
+import com.kidgeniushq.staticstuff.MainCentralData;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.SaveCallback;
@@ -50,15 +51,18 @@ public class InstagramPost {
             testObject.put("postId", postId);
             this.likes = postInJSON.getJSONObject("likes").getInt("count");
             testObject.put("likes", likes);
-            testObject.saveInBackground(new SaveCallback() {
-                @Override
-                public void done(ParseException e) {
-                    if (e == null)
-                        Log.v("benmark", "saved " + captionText);
-                    else
-                        Log.v("benmark", "error saving " + e.getLocalizedMessage() + "error corde = " + String.valueOf(e.getCode()));
-                }
-            });
+
+            if(MainCentralData.allInstagramSourceNames.contains(user)){
+                testObject.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if (e == null)
+                            Log.v("benmark", "saved " + captionText);
+                        else
+                            Log.v("benmark", "error saving " + e.getLocalizedMessage() + "error corde = " + String.valueOf(e.getCode()));
+                    }
+                });
+            }
         }catch (JSONException jse){
         }
     }

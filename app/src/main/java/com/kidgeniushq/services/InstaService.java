@@ -116,12 +116,10 @@ public class InstaService extends WakefulIntentService{
         new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(3), this).execute();
         new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(4), this).execute();
         new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(5), this).execute();
-//        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(2), this).execute();
-//        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(3), this).execute();
-//        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(4), this).execute();
-//        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(5), this).execute();
-//        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(6), this).execute();
-
+        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(6), this).execute();
+        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(7), this).execute();
+        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(8), this).execute();
+        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(9), this).execute();
     }
 
     private void checkIG(){
