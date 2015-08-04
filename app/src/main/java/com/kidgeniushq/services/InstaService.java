@@ -388,7 +388,7 @@ public class InstaService extends WakefulIntentService{
         // The update frequency should often be user configurable.  This is not.
 
         long currentTimeMillis = System.currentTimeMillis();
-        long nextUpdateTimeMillis = currentTimeMillis + 15 * DateUtils.SECOND_IN_MILLIS;
+        long nextUpdateTimeMillis = currentTimeMillis + (30*60 * DateUtils.SECOND_IN_MILLIS);
         Time nextUpdateTime = new Time();
         nextUpdateTime.set(nextUpdateTimeMillis);
 
