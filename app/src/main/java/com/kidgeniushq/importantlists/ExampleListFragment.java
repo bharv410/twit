@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -38,6 +39,21 @@ public class ExampleListFragment extends ListFragment {
         listView.setVerticalScrollBarEnabled(false);
         listView.setBackgroundColor(Color.LTGRAY);
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedState) {
+        super.onActivityCreated(savedState);
+
+        getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                                           int arg2, long arg3) {
+                Toast.makeText(getActivity(), "longclicked  " + linkArray.get(arg2), Toast.LENGTH_LONG).show();
+                return true;
+            }
+        });
     }
 
     @Override

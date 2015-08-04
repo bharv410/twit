@@ -143,26 +143,29 @@ containing a value of this type.
         public static final int twitter_btn=0x7f02000e;
     }
     public static final class id {
-        public static final int action_settings=0x7f0b001f;
+        public static final int action_settings=0x7f0b0022;
         public static final int backBtn=0x7f0b0011;
         public static final int fab=0x7f0b000c;
-        public static final int genre=0x7f0b001c;
+        public static final int genre=0x7f0b001f;
         public static final int glow=0x7f0b0002;
         public static final int horizontal=0x7f0b0000;
+        public static final int itemBigText=0x7f0b001a;
+        public static final int itemImage=0x7f0b0019;
+        public static final int itemSmallText=0x7f0b001b;
         public static final int list=0x7f0b0007;
         public static final int mini=0x7f0b0004;
         public static final int normal=0x7f0b0005;
         public static final int pager=0x7f0b0010;
-        public static final int rating=0x7f0b001b;
-        public static final int releaseYear=0x7f0b001d;
+        public static final int rating=0x7f0b001e;
+        public static final int releaseYear=0x7f0b0020;
         public static final int rubber_band=0x7f0b0003;
         public static final int section_label=0x7f0b0018;
         public static final int textView=0x7f0b0009;
         public static final int textView2=0x7f0b000e;
         public static final int text_count=0x7f0b0015;
         public static final int textviewbandouplaodtoparse=0x7f0b000f;
-        public static final int thumbnail=0x7f0b0019;
-        public static final int title=0x7f0b001a;
+        public static final int thumbnail=0x7f0b001c;
+        public static final int title=0x7f0b001d;
         public static final int todImageView=0x7f0b000b;
         public static final int todText=0x7f0b000a;
         public static final int todTitleTextView=0x7f0b000d;
@@ -172,7 +175,7 @@ containing a value of this type.
         public static final int twitter_name=0x7f0b0013;
         public static final int twitter_profile_image=0x7f0b0012;
         public static final int twitter_screen_name=0x7f0b0014;
-        public static final int twitter_web_view=0x7f0b001e;
+        public static final int twitter_web_view=0x7f0b0021;
         public static final int twitter_write_btn=0x7f0b0016;
         public static final int vertical=0x7f0b0001;
     }
@@ -182,8 +185,10 @@ containing a value of this type.
         public static final int activity_real_important=0x7f030002;
         public static final int activity_twitter_write=0x7f030003;
         public static final int fragment_articles=0x7f030004;
-        public static final int list_row=0x7f030005;
-        public static final int twitter_web_view=0x7f030006;
+        public static final int iglistitem=0x7f030005;
+        public static final int list_row=0x7f030006;
+        public static final int postlistitem=0x7f030007;
+        public static final int twitter_web_view=0x7f030008;
     }
     public static final class menu {
         public static final int main=0x7f0a0000;

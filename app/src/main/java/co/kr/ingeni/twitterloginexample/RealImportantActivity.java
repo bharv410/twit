@@ -105,9 +105,9 @@ public class RealImportantActivity extends Activity implements ActionBar.TabList
 
         @Override
         public Fragment getItem(int position) {
-            if(position==3 || position==1)
+            if(position==3 || position==2)
                 return new InstagramAdminFragment();
-            else if(position==2)
+            else if(position==1)
                 return new TweetsFragment();
             else
                 return new ExampleListFragment();
@@ -125,9 +125,9 @@ public class RealImportantActivity extends Activity implements ActionBar.TabList
                 case 0:
                     return getString(R.string.title_section1).toUpperCase(l);
                 case 1:
-                    return getString(R.string.title_section2).toUpperCase(l);
-                case 2:
                     return getString(R.string.title_section3).toUpperCase(l);
+                case 2:
+                    return getString(R.string.title_section2).toUpperCase(l);
                 case 3:
                     return getString(R.string.title_section4).toUpperCase(l);
             }
