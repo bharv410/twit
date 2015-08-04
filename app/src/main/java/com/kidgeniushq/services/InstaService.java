@@ -101,6 +101,7 @@ public class InstaService extends WakefulIntentService{
 
 
         checkHotNewHipHop();
+        checkOtherSites();
         checkIG();
         scheduleNextUpdate();
         super.onHandleIntent(intent);
@@ -108,6 +109,15 @@ public class InstaService extends WakefulIntentService{
 
     private void checkHotNewHipHop(){
         new CheckHotNewHipHop(finalUrl, this).execute();
+    }
+    private void checkOtherSites(){
+        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(1), this).execute();
+//        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(2), this).execute();
+//        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(3), this).execute();
+//        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(4), this).execute();
+//        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(5), this).execute();
+//        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(6), this).execute();
+
     }
 
     private void checkIG(){
@@ -210,7 +220,7 @@ public class InstaService extends WakefulIntentService{
                 myparser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
                 myparser.setInput(stream, null);
 
-                parseXMLAndStoreIt(myparser, stream);
+                parseXMLAndStoreIt(myparser, stream, urlString);
                 return true;
             }catch (Exception e) {
                 return false;
@@ -236,7 +246,7 @@ public class InstaService extends WakefulIntentService{
 
         }
 
-        private void parseXMLAndStoreIt(XmlPullParser myParser, InputStream stream) {
+        private void parseXMLAndStoreIt(XmlPullParser myParser, InputStream stream, String siteType) {
             int event;
             String text=null;
 
@@ -273,24 +283,27 @@ public class InstaService extends WakefulIntentService{
                         }
                             break;
                     }
-                        ParseObject testObject = new ParseObject("HotNewHipHop");
+                    ParseObject testObject = new ParseObject("BandoPost");
+                    testObject.put("siteType", siteType);
+                    testObject.put("postUniqueId", title);
+                    testObject.put("postText", title);
+
                         if(link!=null)
                             testObject.put("imageUrl", link);
-                        if(title!=null)
-                            testObject.put("postTitle", title);
                         if(description!=null)
                             testObject.put("description", description);
                         if(urlString!=null)
-                            testObject.put("url", urlString);
+                            testObject.put("postUrl", urlString);
+
                     if(!titles.contains(title)){
                         testObject.saveInBackground(new SaveCallback() {
                             @Override
                             public void done(ParseException e) {
-                                titles.add(title);
-                                if (e == null)
-                                    Log.v("benmark", "saved " + title);
+                                if(e==null)
+                                    Log.v("benmark", "saved!");
                                 else
-                                    Log.v("benmark", "error saving " + e.getLocalizedMessage() + "error corde = " + String.valueOf(e.getCode()));
+                                    Log.v("benmark", "error!" + String.valueOf(e.getCode()));
+                                titles.add(title);
                             }
                         });
                     }else{

@@ -46,13 +46,13 @@ public class ExampleListFragment extends ListFragment {
         urlArray = new ArrayList<String>();
         linkArray = new ArrayList<String>();
 
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("HotNewHipHop");
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("BandoPost");
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, ParseException e) {
                 if (e == null) {
                     for (ParseObject po : objects) {
-                        linkArray.add(po.getString("postTitle"));
-                        urlArray.add(po.getString("imageUrl"));
+                        linkArray.add(po.getString("postText"));
+                        urlArray.add(po.getString("postUrl"));
                     }
                     ArrayAdapter<String> a = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, linkArray);
                     setListAdapter(a);

@@ -46,7 +46,6 @@ public class MainCentralData {
                     for (ParseObject cur : list){
                         String postId = cur.getString("postId");
                         allIGIds.add(postId);
-                        Log.v("benmark", "pist id = " + postId);
                     }
                 } else {
                     // something went wrong
@@ -65,7 +64,6 @@ public class MainCentralData {
                     for (ParseObject cur : list){
                         String postId = cur.getString("postTitle");
                         allHNHHTitles.add(postId);
-                        Log.v("benmark", "pist title = " + postId);
                     }
                 } else {
                     // something went wrong

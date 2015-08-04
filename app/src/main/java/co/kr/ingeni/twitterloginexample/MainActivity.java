@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import com.kidgeniushq.adapters.TweetsAdapter;
 import com.kidgeniushq.adapters.UsersAdapter;
-import com.kidgeniushq.asynctasks.GetInstagramImagesAsync;
 import com.kidgeniushq.asynctasks.GetTweetsAsync;
 import com.kidgeniushq.instagram.InstagramApp;
 import com.kidgeniushq.services.InstaService;

@@ -50,7 +50,6 @@ public class GetInstagramImagesAsync extends AsyncTask<URL, Void, Integer> {
             JSONObject jsonObj = (JSONObject) new JSONTokener(response).nextValue();
             jsonArr = jsonObj.getJSONArray("data");
             System.out.println("jsonArr" + jsonArr);
-            Log.i("benmark", "Images fetched successfully");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
