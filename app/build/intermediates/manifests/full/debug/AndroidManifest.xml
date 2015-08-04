@@ -68,6 +68,10 @@
             android:label="@string/title_activity_notif_to_parse" >
         </activity>
         <activity
+            android:name="co.kr.ingeni.twitterloginexample.RealImportantActivity"
+            android:label="@string/title_activity_real_important" >
+        </activity>
+        <activity
             android:name="android.support.v7.widget.TestActivity"
             android:label="RecyclerViewTestActivity" />
     </application>

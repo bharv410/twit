@@ -88,6 +88,9 @@ public class MainActivity extends Activity {
 		todTextView.setTextColor(Color.BLUE);
 
 		MainCentralData.loadAllIGPosts();
+		MainCentralData.loadAllHNHHArticles();
+
+		startActivity(new Intent(this, RealImportantActivity.class));
 	}
 	
 	@Override
@@ -104,13 +107,7 @@ public class MainActivity extends Activity {
 		if(mApp.hasAccessToken()){
 
 			startService(new Intent(getApplicationContext(), InstaService.class));
-			URL url;
-			try {
-				url = new URL(TAGSELFIE_URL + "?access_token=" + getSharedPreferences(SHARED, Context.MODE_PRIVATE).getString(API_ACCESS_TOKEN, null));
-				new GetInstagramImagesAsync(MainActivity.this).execute(url);
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
-			}
+
 		}else{
 			todTextView.setText("Connect your IG to see photo here");
 			todTextView.setTextColor(Color.RED);

@@ -24,6 +24,7 @@ import com.kidgeniushq.instagram.InstagramApp;
 import com.kidgeniushq.interfaces.MyPreferences;
 import com.kidgeniushq.models.HNHHArticle;
 import com.kidgeniushq.models.InstagramPost;
+import com.kidgeniushq.staticstuff.MainCentralData;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.SaveCallback;
@@ -312,10 +313,7 @@ public class InstaService extends WakefulIntentService{
     }
 
     private void showNotifIfNewPicIsPopular(String username, String postId, Set<String> allItems){
-        if(username!=null && !allItems.contains(postId) && (username.equals("champagnepapi") || username.equals("kendalljenner") || username.equals("menacetodennis")
-                || username.equals("instagram") || username.equals("beyonce") || username.equals("kimkardashian")
-                || username.equals("taylorswift") || username.equals("selenagomez") || username.equals("nickiminaj")
-                || username.equals("mileycyrus") || username.equals("katyperry"))) {
+        if(username!=null && !allItems.contains(postId) && MainCentralData.allInstagramSourceNames.contains(username)) {
             showNotifWithPostOrNah(username + " just posted IG", false, "instagram");
         }
     }

@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Twictionary</string>
+    <string name="app_name">AdminApp</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
-	<string name="title_section1">Section 1</string>
+	<string name="title_section1">Articles</string>
 	<string name="login_button_url">https://g.twimg.com/dev/sites/default/files/images_documentation/sign-in-with-twitter-gray.png</string>
-	<string name="title_section2">Section 2</string>
-	<string name="title_section3">Section 3</string>
+	<string name="title_section2">Soundcloud</string>
+	<string name="title_section3">Twit</string>
+	<string name="title_section4">Insty</string>
 	<string name="title_activity_notif_to_parse">NotifToParseActivity</string>
+	<string name="title_activity_real_important">RealImportantActivity</string>
 
 </resources>

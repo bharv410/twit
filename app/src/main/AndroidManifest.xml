@@ -15,7 +15,6 @@
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
-
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
@@ -65,6 +64,10 @@
         <activity
             android:name="com.kidgeniushq.NotifToParseActivity"
             android:label="@string/title_activity_notif_to_parse" >
+        </activity>
+        <activity
+            android:name=".RealImportantActivity"
+            android:label="@string/title_activity_real_important" >
         </activity>
     </application>
 
