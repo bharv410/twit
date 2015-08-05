@@ -71,7 +71,7 @@ public class InstagramAdminFragment extends ListFragment {
                         })
                         .setNegativeButton("delete", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                ParseQuery<ParseObject> query = ParseQuery.getQuery("Instagram");
+                                ParseQuery<ParseObject> query = ParseQuery.getQuery("BandoPost");
                                 query.whereEqualTo("postId", linkArray.get(arg2));
                                 query.findInBackground(new FindCallback<ParseObject>() {
                                     @Override
@@ -105,7 +105,7 @@ public class InstagramAdminFragment extends ListFragment {
         usernamesArray = new ArrayList<String>();
         urlArray = new ArrayList<String>();
 
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Instagram");
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("BandoPost");
         query.addDescendingOrder("createdAt");
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, ParseException e) {

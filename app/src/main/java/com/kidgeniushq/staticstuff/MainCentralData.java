@@ -38,7 +38,7 @@ public class MainCentralData {
 
     public static void loadAllIGPosts(){
         allIGIds = new ArrayList<String>();
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Instagram");
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("BandoPost");
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> list, ParseException e) {

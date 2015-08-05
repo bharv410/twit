@@ -18,7 +18,8 @@ public class InstagramPost {
     int likes;
 
     public InstagramPost(JSONObject postInJSON){
-        ParseObject testObject = new ParseObject("Instagram");
+        ParseObject testObject = new ParseObject("BandoPost");
+        testObject.put("siteType", "instagram");
 
         try{
             String theusername = postInJSON.getJSONObject("user").getString("username");
@@ -49,6 +50,7 @@ public class InstagramPost {
             testObject.put("userProfilePic", userProfilePic);
             this.postId = postInJSON.getString("id");
             testObject.put("postId", postId);
+            testObject.put("postUniqueId", postId);
             this.likes = postInJSON.getJSONObject("likes").getInt("count");
             testObject.put("likes", likes);
 
