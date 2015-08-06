@@ -90,7 +90,7 @@ public class MainActivity extends Activity {
 		MainCentralData.loadAllHNHHArticles();
 
 		startActivity(new Intent(this, RealImportantActivity.class));
-		startService(new Intent(getApplicationContext(), InstaService.class));
+		//startService(new Intent(getApplicationContext(), InstaService.class));
 	}
 	
 	@Override

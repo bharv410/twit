@@ -153,13 +153,13 @@ containing a value of this type.
         public static final int itemImage=0x7f0b0019;
         public static final int itemSmallText=0x7f0b001b;
         public static final int list=0x7f0b0007;
+        public static final int listView=0x7f0b0018;
         public static final int mini=0x7f0b0004;
         public static final int normal=0x7f0b0005;
         public static final int pager=0x7f0b0010;
         public static final int rating=0x7f0b001e;
         public static final int releaseYear=0x7f0b0020;
         public static final int rubber_band=0x7f0b0003;
-        public static final int section_label=0x7f0b0018;
         public static final int textView=0x7f0b0009;
         public static final int textView2=0x7f0b000e;
         public static final int text_count=0x7f0b0015;

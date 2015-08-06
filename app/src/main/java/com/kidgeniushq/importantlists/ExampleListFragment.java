@@ -55,9 +55,11 @@ public class ExampleListFragment extends ListFragment {
                 new AlertDialog.Builder(getActivity())
                         .setTitle("Delete entry")
                         .setMessage("Are you sure you want to delete this entry?")
-                        .setPositiveButton("post", new DialogInterface.OnClickListener() {
+                        .setPositiveButton("Verify!", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 Toast.makeText(getActivity(), "right now it shows eerything not deleted", Toast.LENGTH_SHORT).show();
+
+
                             }
                         })
                         .setNegativeButton("delete", new DialogInterface.OnClickListener() {

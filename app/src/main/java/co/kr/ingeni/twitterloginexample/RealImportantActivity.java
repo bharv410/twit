@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.kidgeniushq.HnHHFragment;
 import com.kidgeniushq.importantlists.ExampleListFragment;
 import com.kidgeniushq.importantlists.InstagramAdminFragment;
 import com.kidgeniushq.importantlists.TweetsFragment;
@@ -53,6 +54,8 @@ public class RealImportantActivity extends Activity implements ActionBar.TabList
                 actionBar.setSelectedNavigationItem(position);
             }
         });
+
+        //mViewPager.setCurrentItem(2);
 
         // For each of the sections in the app, add a tab to the action bar.
         for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
@@ -105,7 +108,9 @@ public class RealImportantActivity extends Activity implements ActionBar.TabList
 
         @Override
         public Fragment getItem(int position) {
-            if(position==3 || position==2)
+            if(position==0)
+                return new HnHHFragment();
+            else if(position==3)
                 return new InstagramAdminFragment();
             else if(position==1)
                 return new TweetsFragment();
@@ -122,12 +127,12 @@ public class RealImportantActivity extends Activity implements ActionBar.TabList
         public CharSequence getPageTitle(int position) {
             Locale l = Locale.getDefault();
             switch (position) {
-                case 0:
+                case 2:
                     return getString(R.string.title_section1).toUpperCase(l);
                 case 1:
                     return getString(R.string.title_section3).toUpperCase(l);
-                case 2:
-                    return getString(R.string.title_section2).toUpperCase(l);
+                case 0:
+                    return "HotnewHipHOps".toUpperCase(l);
                 case 3:
                     return getString(R.string.title_section4).toUpperCase(l);
             }

@@ -63,13 +63,13 @@ int id itemBigText 0x7f0b001a
 int id itemImage 0x7f0b0019
 int id itemSmallText 0x7f0b001b
 int id list 0x7f0b0007
+int id listView 0x7f0b0018
 int id mini 0x7f0b0004
 int id normal 0x7f0b0005
 int id pager 0x7f0b0010
 int id rating 0x7f0b001e
 int id releaseYear 0x7f0b0020
 int id rubber_band 0x7f0b0003
-int id section_label 0x7f0b0018
 int id textView 0x7f0b0009
 int id textView2 0x7f0b000e
 int id text_count 0x7f0b0015

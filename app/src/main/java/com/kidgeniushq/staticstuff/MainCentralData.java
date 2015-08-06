@@ -77,8 +77,8 @@ public class MainCentralData {
         allArticleSourceUrl.add("http://feeds.feedburner.com/realhotnewhiphop.xml");
         allArticleSourceUrl.add("http://www.power1051fm.com/podcast/breakfastclub_interviews.xml");
         allArticleSourceUrl.add("http://feeds.feedburner.com/TheFaderMagazine/");
-        allArticleSourceUrl.add("http://noisey.vice.com/rss");
-        allArticleSourceUrl.add("http://hiphopdx.com/rss/news.xml");
+        //allArticleSourceUrl.add("http://noisey.vice.com/rss");
+        //allArticleSourceUrl.add("http://hiphopdx.com/rss/news.xml");
         allArticleSourceUrl.add("http://feeds.feedburner.com/hypebeast/feed");
         allArticleSourceUrl.add("http://feeds.feedburner.com/highsnobiety/rss?format=xml");
         allArticleSourceUrl.add("http://blog.bleacherreport.com/feed/");

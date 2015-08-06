@@ -88,8 +88,8 @@ public class InstaService extends WakefulIntentService{
     @Override
     protected void onHandleIntent(Intent intent) {
 
-        checkHotNewHipHop();
-        checkOtherSites();
+//        checkHotNewHipHop();
+//        checkOtherSites();
         checkIG();
         scheduleNextUpdate();
         super.onHandleIntent(intent);
@@ -106,8 +106,8 @@ public class InstaService extends WakefulIntentService{
         new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(5), this).execute();
         new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(6), this).execute();
         new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(7), this).execute();
-        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(8), this).execute();
-        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(9), this).execute();
+//        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(8), this).execute();
+//        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(9), this).execute();
     }
 
     private void checkIG(){
@@ -174,7 +174,7 @@ public class InstaService extends WakefulIntentService{
     private class CheckHotNewHipHop extends AsyncTask<URL, Void, Boolean>  {
         private String title = "title";
         private String link = "url";
-        private String image = "image";
+        private String image = "src";
         private String description = "description";
         private String urlString = null;
         private XmlPullParserFactory xmlFactoryObject;
@@ -271,17 +271,23 @@ public class InstaService extends WakefulIntentService{
                             }
 
                             else if(name.equals("url")){
-                            urlString = text;
-                        }
+                                urlString = text;
+
+                        }else if(name.equals("src")) {
+                                Log.v("benmark", "imagetext = " + text);
+                                image = text;
+                            }
+
                             break;
                     }
                     ParseObject testObject = new ParseObject("BandoPost");
                     testObject.put("siteType", siteType);
                     testObject.put("postUniqueId", title);
                     testObject.put("postText", title);
+                    testObject.put("postLink", link);
 
-                        if(link!=null)
-                            testObject.put("imageUrl", link);
+                        if(image!=null)
+                            testObject.put("imageUrl", image);
                         if(description!=null)
                             testObject.put("description", description);
                         if(urlString!=null)

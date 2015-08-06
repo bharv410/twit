@@ -67,6 +67,8 @@ public class InstagramAdminFragment extends ListFragment {
                         .setPositiveButton("post", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 Toast.makeText(getActivity(), "right now it shows eerything not deleted", Toast.LENGTH_SHORT).show();
+
+
                             }
                         })
                         .setNegativeButton("delete", new DialogInterface.OnClickListener() {
