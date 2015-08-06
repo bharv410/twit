@@ -281,6 +281,7 @@ public class HnHHFragment extends Fragment{
         gameScore.put("postLink", url);
         gameScore.put("postText", caption);
         gameScore.put("imageUrl", link);
+        gameScore.put("siteType", "article");
         gameScore.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
