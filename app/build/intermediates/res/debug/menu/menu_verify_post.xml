@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+	  xmlns:tools="http://schemas.android.com/tools"
+	  tools:context="co.kr.ingeni.twitterloginexample.VerifyPostActivity">
+	<item android:id="@+id/action_settings"
+		  android:title="@string/action_settings"
+		  android:orderInCategory="100"
+		  android:showAsAction="never"/>
+</menu>
+<!-- From: file:/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/menu/menu_verify_post.xml -->

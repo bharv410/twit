@@ -16,7 +16,7 @@ public final class R {
 		public static final int fab_type = 0x7f010007;
 	}
 	public static final class color {
-		public static final int material_blue_500 = 0x7f08000b;
+		public static final int material_blue_500 = 0x7f08000f;
 	}
 	public static final class dimen {
 		public static final int fab_elevation_lollipop = 0x7f060002;
@@ -26,8 +26,8 @@ public final class R {
 		public static final int fab_size_normal = 0x7f060006;
 	}
 	public static final class drawable {
-		public static final int fab_shadow = 0x7f020001;
-		public static final int fab_shadow_mini = 0x7f020002;
+		public static final int fab_shadow = 0x7f020003;
+		public static final int fab_shadow_mini = 0x7f020004;
 	}
 	public static final class id {
 		public static final int mini = 0x7f0b0004;

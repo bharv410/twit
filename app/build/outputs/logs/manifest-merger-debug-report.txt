@@ -159,6 +159,12 @@ ADDED from AndroidManifest.xml:68:9
 		ADDED from AndroidManifest.xml:70:13
 	android:name
 		ADDED from AndroidManifest.xml:69:13
+activity#co.kr.ingeni.twitterloginexample.VerifyPostActivity
+ADDED from AndroidManifest.xml:72:9
+	android:label
+		ADDED from AndroidManifest.xml:74:13
+	android:name
+		ADDED from AndroidManifest.xml:73:13
 activity#android.support.v7.widget.TestActivity
 ADDED from com.android.support:recyclerview-v7:21.0.3:18:9
 	android:label

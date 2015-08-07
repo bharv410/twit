@@ -72,6 +72,10 @@
             android:label="@string/title_activity_real_important" >
         </activity>
         <activity
+            android:name="co.kr.ingeni.twitterloginexample.VerifyPostActivity"
+            android:label="@string/title_activity_verify_post" >
+        </activity>
+        <activity
             android:name="android.support.v7.widget.TestActivity"
             android:label="RecyclerViewTestActivity" />
     </application>

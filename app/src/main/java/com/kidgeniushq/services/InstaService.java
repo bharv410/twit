@@ -45,11 +45,13 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import java.util.TimeZone;
 
 import co.kr.ingeni.twitterloginexample.MainActivity;
 import co.kr.ingeni.twitterloginexample.R;
@@ -122,8 +124,7 @@ public class InstaService extends WakefulIntentService{
                 e.printStackTrace();
             }
         }else{
-            Toast.makeText(getApplicationContext(), "Not logged in IG. cant get in background", Toast.LENGTH_LONG).show();
-            Toast.makeText(getApplicationContext(), "Not logged in IG. cant get in background", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Not logged in IG. cant get in background", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -400,4 +401,6 @@ public class InstaService extends WakefulIntentService{
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC, nextUpdateTimeMillis, pendingIntent);
     }
+
+
 }

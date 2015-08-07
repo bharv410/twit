@@ -69,6 +69,10 @@
             android:name=".RealImportantActivity"
             android:label="@string/title_activity_real_important" >
         </activity>
+        <activity
+            android:name=".VerifyPostActivity"
+            android:label="@string/title_activity_verify_post" >
+        </activity>
     </application>
 
 </manifest>

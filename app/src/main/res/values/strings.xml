@@ -12,5 +12,6 @@
 	<string name="title_section4">Insty</string>
 	<string name="title_activity_notif_to_parse">NotifToParseActivity</string>
 	<string name="title_activity_real_important">RealImportantActivity</string>
+	<string name="title_activity_verify_post">VerifyPostActivity</string>
 
 </resources>

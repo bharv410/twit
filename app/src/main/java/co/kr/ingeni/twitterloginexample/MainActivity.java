@@ -39,7 +39,8 @@ public class MainActivity extends Activity {
 	private final String client_id = "49fcbbb3abe9448798d8849806da6cd4";
 	private final String client_secret = "424a0cc8965a4f7da7c73897fb90b810";
 	private final String callback_url = "http://phantom.com";
-	private final String TAGSELFIE_URL = "https://api.instagram.com/v1/tags/selfie/media/recent";
+	private final String INSTYPREFIX_URL = "https://api.instagram.com/v1//users/";
+	private final String INSTSUFIX_URLL = "/media/recent/?access_token=[ACCESS_TOKEN]";
 	private static final String SHARED = "Instagram_Preferences";
 	private static final String API_ACCESS_TOKEN = "access_token";
 

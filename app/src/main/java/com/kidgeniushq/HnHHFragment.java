@@ -3,6 +3,7 @@ package com.kidgeniushq;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -45,6 +46,7 @@ import java.util.List;
 import java.util.Set;
 
 import co.kr.ingeni.twitterloginexample.R;
+import co.kr.ingeni.twitterloginexample.VerifyPostActivity;
 
 /**
  * Created by benjamin.harvey on 8/6/15.
@@ -62,6 +64,7 @@ public class HnHHFragment extends Fragment{
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_articles,
                 container, false);
+
 //        listView.setDivider(new ColorDrawable(getResources().getColor(android.R.color.holo_blue_light)));
 //        listView.setDividerHeight(1);
 //        listView.setVerticalScrollBarEnabled(false);
@@ -91,6 +94,7 @@ public class HnHHFragment extends Fragment{
 
         protected Boolean doInBackground(URL... urls) {
             titles = new ArrayList<String>();
+            titles.add("Erase these top 3");
             links = new ArrayList<String>();
             try {
                 URL url = new URL(urlString);
@@ -125,6 +129,16 @@ public class HnHHFragment extends Fragment{
                 ListView listView = (ListView) getActivity().findViewById(R.id.listView);
                 final ArrayAdapter<String> allTitlesAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,titles);
                 listView.setAdapter(allTitlesAdapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        String titleeee = titles.get(i);
+                        String linkkkk = links.get(i);
+                        new DownloadTask(getActivity(), titleeee, linkkkk).execute(linkkkk);
+                    }
+                });
+
+
                 listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
                     @Override
@@ -136,16 +150,16 @@ public class HnHHFragment extends Fragment{
                                 .setPositiveButton("post", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         Log.v("benmark", "arg2 " + arg2);
-                                        String title = titles.get(arg2);
-                                        String link = links.get(arg2);
+                                        String titleeee = titles.get(arg2);
+                                        String linkkkk = links.get(arg2);
                                         Log.v("benmark", "d   " + title);
-                                        new DownloadTask(getActivity(), title, link).execute(link);
+                                        new DownloadTask(getActivity(), titleeee, linkkkk).execute(linkkkk);
                                     }
                                 })
                                 .setNegativeButton("delete", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         Log.v("benmark", "arg2 " + arg2);
-                                        String title = titles.get(arg2);
+                                        String titleeee = titles.get(arg2);
                                         String link = links.get(arg2);
                                         allTitlesAdapter.remove(title);
                                         allTitlesAdapter.notifyDataSetChanged();
@@ -205,8 +219,8 @@ public class HnHHFragment extends Fragment{
                     if(!titles.contains(title)){
                         titles.add(title);
                         links.add(link);
+                        Log.v("benmark", "link = " + String.valueOf(links.size()) + "= " + link);
                         Log.v("benmark", "title " + String.valueOf(titles.size()) + "= " + title);
-                        Log.v("benmark", "link = " + link);
                     }
 
                     event = myParser.next();
@@ -251,7 +265,7 @@ public class HnHHFragment extends Fragment{
 
                 response = mHttpClient.execute(httpGet);
                 s = EntityUtils.toString(response.getEntity(), "UTF-8");
-
+                Log.v("benmark", "full response = " + s);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -266,27 +280,21 @@ public class HnHHFragment extends Fragment{
                 String[] parts = result.split("\"og:image\"");
 
                 String partAfterOGImage = parts[1];
-                //Log.v("benmark", "found partAfterOGImage " + partAfterOGImage);
+                Log.v("benmark", "found partAfterOGImage " + partAfterOGImage);
                 String[] getRidOfTheEnd = partAfterOGImage.split("/><m");
-
                 String theLinkSHouldBe = getRidOfTheEnd[0].split("\"")[1];
+
+                Log.v("benmark", " theLinkSHouldBe " + theLinkSHouldBe);
                 updateParseOgImage(theLinkSHouldBe, title, url);
             }
         }
     }
 
     private void updateParseOgImage(String link , final String caption, String url){
-        Log.v("benmark", "updateParseOgImage");
-        ParseObject gameScore = new ParseObject("VerifiedBandoPost");
-        gameScore.put("postLink", url);
-        gameScore.put("postText", caption);
-        gameScore.put("imageUrl", link);
-        gameScore.put("siteType", "article");
-        gameScore.saveInBackground(new SaveCallback() {
-            @Override
-            public void done(ParseException e) {
-                Toast.makeText(getActivity(), "posted " + caption, Toast.LENGTH_LONG).show();
-            }
-        });
+        Intent intent = new Intent(getActivity(), VerifyPostActivity.class);
+        intent.putExtra("url",link);
+        intent.putExtra("caption",caption);
+        intent.putExtra("link",url);
+        startActivity(intent);
     }
 }

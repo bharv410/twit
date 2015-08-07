@@ -34,8 +34,12 @@
     <color name="default_color">#5B5857</color>
     <color name="default_font">#323232</color>
     <color name="facebook">#537BBC</color>
+    <color name="feed_bg">#d3d6db</color>
+    <color name="feed_item_bg">#ffffff</color>
+    <color name="feed_item_border">#c2c3c8</color>
     <color name="genre">#666666</color>
     <color name="hint_font">#969696</color>
+    <color name="link">#0a80d1</color>
     <color name="list_divider">#d9d9d9</color>
     <color name="list_row_end_color">#ffffff</color>
     <color name="list_row_hover_end_color">#ebeef0</color>
@@ -47,8 +51,10 @@
     <!-- From: file:/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/values/color.xml -->
     <eat-comment/>
     <color name="red">#FF0000</color>
+    <color name="timestamp">#a0a3a7</color>
     <color name="title_bar">#54C7EE</color>
     <color name="twitter">#78CBEF</color>
+    <color name="white">#ffffff</color>
     <color name="white_alpha">#F8F5E4</color>
     <color name="year">#888888</color>
     <declare-styleable name="FlipView"><attr format="enum" name="orientation"><enum name="vertical" value="0"/><enum name="horizontal" value="1"/></attr><attr format="enum" name="overFlipMode"><enum name="glow" value="0"/><enum name="rubber_band" value="1"/></attr></declare-styleable>
@@ -66,6 +72,17 @@
     <dimen name="fab_size_normal">56dp</dimen>
     <!-- From: file:/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
+    <dimen name="feed_item_border_width">1dp</dimen>
+    <dimen name="feed_item_corner_radius">3dp</dimen>
+    <dimen name="feed_item_margin">10dp</dimen>
+    <dimen name="feed_item_padding_left_right">15dp</dimen>
+    <dimen name="feed_item_padding_top_bottom">20dp</dimen>
+    <dimen name="feed_item_profile_info_padd">10dp</dimen>
+    <dimen name="feed_item_profile_name">15dp</dimen>
+    <dimen name="feed_item_profile_pic">50dp</dimen>
+    <dimen name="feed_item_status_pad_left_right">15dp</dimen>
+    <dimen name="feed_item_status_pad_top">13dp</dimen>
+    <dimen name="feed_item_timestamp">13dp</dimen>
     <dimen name="genre">13dip</dimen>
     <dimen name="rating">15dip</dimen>
     <dimen name="title">17dp</dimen>
@@ -123,6 +140,7 @@
     <string name="title_activity_settings">Settings</string>
     <!-- From: file:/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <string name="title_activity_verify_post">VerifyPostActivity</string>
     <string name="title_section1">Articles</string>
     <string name="title_section2">Soundcloud</string>
     <string name="title_section3">Twit</string>
