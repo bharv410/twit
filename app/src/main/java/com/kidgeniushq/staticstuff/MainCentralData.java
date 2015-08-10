@@ -92,8 +92,8 @@ public class MainCentralData {
         allArticleSourceNames.add("hotnewhiphop");
         allArticleSourceNames.add("breakfastclub");
         allArticleSourceNames.add("TheFaderMagazine/");
-        allArticleSourceNames.add("noisey");
-        allArticleSourceNames.add("hiphopdx");
+        //allArticleSourceNames.add("noisey");
+        //allArticleSourceNames.add("hiphopdx");
         allArticleSourceNames.add("hypebeast");
         allArticleSourceNames.add("highsnobiety");
         allArticleSourceNames.add("bleacherreport");

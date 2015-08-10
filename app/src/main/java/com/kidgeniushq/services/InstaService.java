@@ -92,271 +92,269 @@ public class InstaService extends WakefulIntentService{
 
 //        checkHotNewHipHop();
 //        checkOtherSites();
-        checkIG();
+        //checkIG();
         scheduleNextUpdate();
+        showNotifWithPostOrNah("New HotNewHipHop Articles!");
         super.onHandleIntent(intent);
     }
+//
+//    private void checkHotNewHipHop(){
+//        new CheckHotNewHipHop(finalUrl, this).execute();
+//    }
+//    private void checkOtherSites(){
+//        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(1), this).execute();
+//        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(2), this).execute();
+//        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(3), this).execute();
+//        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(4), this).execute();
+//        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(5), this).execute();
+//        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(6), this).execute();
+//        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(7), this).execute();
+////        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(8), this).execute();
+////        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(9), this).execute();
+//    }
 
-    private void checkHotNewHipHop(){
-        new CheckHotNewHipHop(finalUrl, this).execute();
-    }
-    private void checkOtherSites(){
-        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(1), this).execute();
-        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(2), this).execute();
-        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(3), this).execute();
-        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(4), this).execute();
-        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(5), this).execute();
-        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(6), this).execute();
-        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(7), this).execute();
-//        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(8), this).execute();
-//        new CheckHotNewHipHop(MainCentralData.allArticleSourcesUrls.get(9), this).execute();
-    }
-
-    private void checkIG(){
-        //get ig
-        mApp = new InstagramApp(this, client_id, client_secret, callback_url);
-        if(mApp.hasAccessToken()){
-            URL url;
-            try {
-                url = new URL(TAGSELFIE_URL + "?access_token=" + getSharedPreferences(SHARED, Context.MODE_PRIVATE).getString(API_ACCESS_TOKEN, null));
-                new CheckPopularIg().execute(url);
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
-        }else{
-            Toast.makeText(getApplicationContext(), "Not logged in IG. cant get in background", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private class CheckPopularIg extends AsyncTask<URL, Void, Integer>  {
-        private JSONArray jsonArr;
-
-        protected Integer doInBackground(URL... urls) {
-            try {
-                HttpURLConnection urlConnection = (HttpURLConnection) urls[0].openConnection();
-                urlConnection.setRequestMethod("GET");
-                urlConnection.setDoInput(true);
-                urlConnection.connect();
-                String response = streamToString(urlConnection.getInputStream());
-
-                JSONObject jsonObj = (JSONObject) new JSONTokener(response).nextValue();
-                jsonArr = jsonObj.getJSONArray("data");
-                return jsonArr.length();
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                return 0;
-            }
-        }
-
-        protected void onPostExecute(Integer result) {
-            if (jsonArr != null) {
-                MyPreferences preferences = StoreBox.create(getApplicationContext(), MyPreferences.class);
-                Set<String> allItems = preferences.getIGPosts() == null ? new LinkedHashSet<String>() : preferences.getIGPosts();
-                Set<String> items = new LinkedHashSet<String>();
-                try {
-                    for (int i = 0; i < jsonArr.length(); i++) {
-                        InstagramPost igpost = new InstagramPost(jsonArr.getJSONObject(i));
-                        items.add(igpost.getPostId());
-                        showNotifIfNewPicIsPopular(igpost.getUsername(), igpost.getPostId(), allItems);
-                        allItems.add(igpost.getPostId());
-                    }
-
-                    preferences.setIGPosts(allItems);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }else{
-                Toast.makeText(getApplicationContext(), "No popular igs found", Toast.LENGTH_LONG).show();
-            }
-        }
-    }
-
-    private class CheckHotNewHipHop extends AsyncTask<URL, Void, Boolean>  {
-        private String title = "title";
-        private String link = "url";
-        private String image = "src";
-        private String description = "description";
-        private String urlString = null;
-        private XmlPullParserFactory xmlFactoryObject;
-
-        String notif = "";
-
-        public volatile boolean parsingComplete = true;
-        Context context;
-
-        private List<String> titles;
-
-        public CheckHotNewHipHop(String url, Context ctx){
-            this.urlString = url;
-            this.context = ctx;
-        }
-
-        protected Boolean doInBackground(URL... urls) {
-            titles = new ArrayList<String>();
-            try {
-                URL url = new URL(urlString);
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-
-                conn.setReadTimeout(10000 /* milliseconds */);
-                conn.setConnectTimeout(15000 /* milliseconds */);
-                conn.setRequestMethod("GET");
-                conn.setDoInput(true);
-
-                // Starts the query
-                conn.connect();
-                InputStream stream = conn.getInputStream();
-
-                xmlFactoryObject = XmlPullParserFactory.newInstance();
-                XmlPullParser myparser = xmlFactoryObject.newPullParser();
-
-                myparser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
-                myparser.setInput(stream, null);
-
-                parseXMLAndStoreIt(myparser, stream, urlString);
-                return true;
-            }catch (Exception e) {
-                return false;
-            }
-        }
-
-        protected void onPostExecute(Boolean result) {
-            if(result){
-                Toast.makeText(getApplicationContext(), "think of best way to handle", Toast.LENGTH_LONG).show();
-            }
-
-            MyPreferences preferences = StoreBox.create(getApplicationContext(), MyPreferences.class);
-            Set<String> allItems = preferences.getArticles() == null ? new LinkedHashSet<String>() : preferences.getArticles();
-
-//            for(HNHHArticle article : result){
-//                if(article.getCaption().contains("Meek")){
-//                    showNotifWithPostOrNah(articlesDatasource.createArticle(article.getCaption(), article.getInfo(), article.getLink()).getCaption(), true, "HotNewHipHop");
-//                }
+//    private void checkIG(){
+//        //get ig
+//        mApp = new InstagramApp(this, client_id, client_secret, callback_url);
+//        if(mApp.hasAccessToken()){
+//            URL url;
+//            try {
+//                url = new URL(TAGSELFIE_URL + "?access_token=" + getSharedPreferences(SHARED, Context.MODE_PRIVATE).getString(API_ACCESS_TOKEN, null));
+//                new CheckPopularIg().execute(url);
+//            } catch (MalformedURLException e) {
+//                e.printStackTrace();
 //            }
+//        }else{
+//            Toast.makeText(getApplicationContext(), "Not logged in IG. cant get in background", Toast.LENGTH_SHORT).show();
+//        }
+//    }
+//
+//    private class CheckPopularIg extends AsyncTask<URL, Void, Integer>  {
+//        private JSONArray jsonArr;
+//
+//        protected Integer doInBackground(URL... urls) {
+//            try {
+//                HttpURLConnection urlConnection = (HttpURLConnection) urls[0].openConnection();
+//                urlConnection.setRequestMethod("GET");
+//                urlConnection.setDoInput(true);
+//                urlConnection.connect();
+//                String response = streamToString(urlConnection.getInputStream());
+//
+//                JSONObject jsonObj = (JSONObject) new JSONTokener(response).nextValue();
+//                jsonArr = jsonObj.getJSONArray("data");
+//                return jsonArr.length();
+//            } catch (Exception ex) {
+//                ex.printStackTrace();
+//                return 0;
+//            }
+//        }
+//
+//        protected void onPostExecute(Integer result) {
+//            if (jsonArr != null) {
+//                MyPreferences preferences = StoreBox.create(getApplicationContext(), MyPreferences.class);
+//                Set<String> allItems = preferences.getIGPosts() == null ? new LinkedHashSet<String>() : preferences.getIGPosts();
+//                Set<String> items = new LinkedHashSet<String>();
+//                try {
+//                    for (int i = 0; i < jsonArr.length(); i++) {
+//                        InstagramPost igpost = new InstagramPost(jsonArr.getJSONObject(i));
+//                        items.add(igpost.getPostId());
+//                        showNotifIfNewPicIsPopular(igpost.getUsername(), igpost.getPostId(), allItems);
+//                        allItems.add(igpost.getPostId());
+//                    }
+//
+//                    preferences.setIGPosts(allItems);
+//
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//            }else{
+//                Toast.makeText(getApplicationContext(), "No popular igs found", Toast.LENGTH_LONG).show();
+//            }
+//        }
+//    }
+//
+//    private class CheckHotNewHipHop extends AsyncTask<URL, Void, Boolean>  {
+//        private String title = "title";
+//        private String link = "url";
+//        private String image = "src";
+//        private String description = "description";
+//        private String urlString = null;
+//        private XmlPullParserFactory xmlFactoryObject;
+//
+//        String notif = "";
+//
+//        public volatile boolean parsingComplete = true;
+//        Context context;
+//
+//        private List<String> titles;
+//
+//        public CheckHotNewHipHop(String url, Context ctx){
+//            this.urlString = url;
+//            this.context = ctx;
+//        }
+//
+//        protected Boolean doInBackground(URL... urls) {
+//            titles = new ArrayList<String>();
+//            try {
+//                URL url = new URL(urlString);
+//                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//
+//                conn.setReadTimeout(10000 /* milliseconds */);
+//                conn.setConnectTimeout(15000 /* milliseconds */);
+//                conn.setRequestMethod("GET");
+//                conn.setDoInput(true);
+//
+//                // Starts the query
+//                conn.connect();
+//                InputStream stream = conn.getInputStream();
+//
+//                xmlFactoryObject = XmlPullParserFactory.newInstance();
+//                XmlPullParser myparser = xmlFactoryObject.newPullParser();
+//
+//                myparser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
+//                myparser.setInput(stream, null);
+//
+//                parseXMLAndStoreIt(myparser, stream, urlString);
+//                return true;
+//            }catch (Exception e) {
+//                return false;
+//            }
+//        }
+//
+//        protected void onPostExecute(Boolean result) {
+//            if(result){
+//                Toast.makeText(getApplicationContext(), "think of best way to handle", Toast.LENGTH_LONG).show();
+//            }
+//
+//            MyPreferences preferences = StoreBox.create(getApplicationContext(), MyPreferences.class);
+//            Set<String> allItems = preferences.getArticles() == null ? new LinkedHashSet<String>() : preferences.getArticles();
+//
+////            for(HNHHArticle article : result){
+////                if(article.getCaption().contains("Meek")){
+////                    showNotifWithPostOrNah(articlesDatasource.createArticle(article.getCaption(), article.getInfo(), article.getLink()).getCaption(), true, "HotNewHipHop");
+////                }
+////            }
+//
+//            allItems.add(notif);
+//            preferences.setArticles(allItems);
+//
+//        }
+//
+//        private void parseXMLAndStoreIt(XmlPullParser myParser, InputStream stream, String siteType) {
+//            int event;
+//            String text=null;
+//
+//            try {
+//                event = myParser.getEventType();
+//
+//                while (event != XmlPullParser.END_DOCUMENT) {
+//                    String name=myParser.getName();
+//
+//                    switch (event){
+//                        case XmlPullParser.START_TAG:
+//                            break;
+//
+//                        case XmlPullParser.TEXT:
+//                            text = myParser.getText();
+//                            break;
+//
+//                        case XmlPullParser.END_TAG:
+//
+//                            if(name.equals("title")){
+//                                title = text;
+//                            }
+//
+//                            else if(name.equals("link")){
+//                                link = text;
+//                            }
+//
+//                            else if(name.equals("description")){
+//                                description = text;
+//                            }
+//
+//                            else if(name.equals("url")){
+//                                urlString = text;
+//
+//                        }else if(name.equals("src")) {
+//                                Log.v("benmark", "imagetext = " + text);
+//                                image = text;
+//                            }
+//
+//                            break;
+//                    }
+//                    ParseObject testObject = new ParseObject("BandoPost");
+//                    testObject.put("siteType", siteType);
+//                    testObject.put("postUniqueId", title);
+//                    testObject.put("postText", title);
+//                    testObject.put("postLink", link);
+//
+//                        if(image!=null)
+//                            testObject.put("imageUrl", image);
+//                        if(description!=null)
+//                            testObject.put("description", description);
+//                        if(urlString!=null)
+//                            testObject.put("postUrl", urlString);
+//
+//                    if(!titles.contains(title)){
+//                        titles.add(title);
+//                        testObject.saveInBackground(new SaveCallback() {
+//                            @Override
+//                            public void done(ParseException e) {
+//                                if(e==null)
+//                                    Log.v("benmark", "saved!");
+//                                else
+//                                    Log.v("benmark", "error!" + String.valueOf(e.getCode()));
+//                            }
+//                        });
+//                    }else{
+//                        Log.v("benmark", "skipping duplicate of " + title);
+//                    }
+//                        event = myParser.next();
+//                }
+//
+//                parsingComplete = false;
+//            }
+//            catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//            try {
+//                stream.close();
+//            }catch (IOException e){
+//
+//            }
+//        }
+//    }
 
-            allItems.add(notif);
-            preferences.setArticles(allItems);
+//    private void showNotifIfNewPicIsPopular(String username, String postId, Set<String> allItems){
+//        if(username!=null && !allItems.contains(postId) && MainCentralData.allInstagramSourceNames.contains(username)) {
+//            showNotifWithPostOrNah(username + " just posted IG", false, "instagram");
+//        }
+//    }
+//
+//    private void showNotif(String text){
+//        NotificationManager notificationManager =
+//                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+//        int icon = R.drawable.gear;
+//        CharSequence notiText = "Your notification from the service";
+//        long meow = System.currentTimeMillis();
+//
+//        Notification notification = new Notification(icon, notiText, meow);
+//
+//        Context context = getApplicationContext();
+//        CharSequence contentTitle = text;
+//        CharSequence contentText = text;
+//        Intent notificationIntent = new Intent(this, MainActivity.class);
+//        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+//
+//        notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
+//
+//        Random random = new Random();
+//        int m = random.nextInt(9999 - 1000) + 1000;
+//        notificationManager.notify(m, notification);
+//    }
 
-        }
-
-        private void parseXMLAndStoreIt(XmlPullParser myParser, InputStream stream, String siteType) {
-            int event;
-            String text=null;
-
-            try {
-                event = myParser.getEventType();
-
-                while (event != XmlPullParser.END_DOCUMENT) {
-                    String name=myParser.getName();
-
-                    switch (event){
-                        case XmlPullParser.START_TAG:
-                            break;
-
-                        case XmlPullParser.TEXT:
-                            text = myParser.getText();
-                            break;
-
-                        case XmlPullParser.END_TAG:
-
-                            if(name.equals("title")){
-                                title = text;
-                            }
-
-                            else if(name.equals("link")){
-                                link = text;
-                            }
-
-                            else if(name.equals("description")){
-                                description = text;
-                            }
-
-                            else if(name.equals("url")){
-                                urlString = text;
-
-                        }else if(name.equals("src")) {
-                                Log.v("benmark", "imagetext = " + text);
-                                image = text;
-                            }
-
-                            break;
-                    }
-                    ParseObject testObject = new ParseObject("BandoPost");
-                    testObject.put("siteType", siteType);
-                    testObject.put("postUniqueId", title);
-                    testObject.put("postText", title);
-                    testObject.put("postLink", link);
-
-                        if(image!=null)
-                            testObject.put("imageUrl", image);
-                        if(description!=null)
-                            testObject.put("description", description);
-                        if(urlString!=null)
-                            testObject.put("postUrl", urlString);
-
-                    if(!titles.contains(title)){
-                        titles.add(title);
-                        testObject.saveInBackground(new SaveCallback() {
-                            @Override
-                            public void done(ParseException e) {
-                                if(e==null)
-                                    Log.v("benmark", "saved!");
-                                else
-                                    Log.v("benmark", "error!" + String.valueOf(e.getCode()));
-                            }
-                        });
-                    }else{
-                        Log.v("benmark", "skipping duplicate of " + title);
-                    }
-                        event = myParser.next();
-                }
-
-                parsingComplete = false;
-            }
-            catch (Exception e) {
-                e.printStackTrace();
-            }
-            try {
-                stream.close();
-            }catch (IOException e){
-
-            }
-        }
-    }
-
-    private void showNotifIfNewPicIsPopular(String username, String postId, Set<String> allItems){
-        if(username!=null && !allItems.contains(postId) && MainCentralData.allInstagramSourceNames.contains(username)) {
-            showNotifWithPostOrNah(username + " just posted IG", false, "instagram");
-        }
-    }
-
-    private void showNotif(String text){
-        NotificationManager notificationManager =
-                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        int icon = R.drawable.gear;
-        CharSequence notiText = "Your notification from the service";
-        long meow = System.currentTimeMillis();
-
-        Notification notification = new Notification(icon, notiText, meow);
-
-        Context context = getApplicationContext();
-        CharSequence contentTitle = text;
-        CharSequence contentText = text;
-        Intent notificationIntent = new Intent(this, MainActivity.class);
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
-
-        notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
-
-        Random random = new Random();
-        int m = random.nextInt(9999 - 1000) + 1000;
-        notificationManager.notify(m, notification);
-    }
-
-    private void showNotifWithPostOrNah(String text, boolean isArticle, String postVia){
-        Intent sendToParse = new Intent(this, NotifToParseActivity.class);
-        sendToParse.putExtra("isArticle", isArticle);
-        sendToParse.putExtra("postvia", postVia);
-        sendToParse.putExtra("postText", text);
+    private void showNotifWithPostOrNah(String text){
+        Intent sendToParse = new Intent(this, MainActivity.class);
         PendingIntent pendingIntentPost = PendingIntent.getBroadcast(this, 0, sendToParse, PendingIntent.FLAG_UPDATE_CURRENT);
 
         //building the notification
@@ -387,7 +385,7 @@ public class InstaService extends WakefulIntentService{
         // The update frequency should often be user configurable.  This is not.
 
         long currentTimeMillis = System.currentTimeMillis();
-        long nextUpdateTimeMillis = currentTimeMillis + (30*60 * DateUtils.SECOND_IN_MILLIS);
+        long nextUpdateTimeMillis = currentTimeMillis + (4*60*60 * DateUtils.SECOND_IN_MILLIS);
         Time nextUpdateTime = new Time();
         nextUpdateTime.set(nextUpdateTimeMillis);
 

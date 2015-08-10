@@ -19,6 +19,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.kidgeniushq.interfaces.MyPreferences;
+import com.kidgeniushq.staticstuff.MainCentralData;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -43,6 +44,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 import co.kr.ingeni.twitterloginexample.R;
@@ -54,9 +56,13 @@ import co.kr.ingeni.twitterloginexample.VerifyPostActivity;
 public class HnHHFragment extends Fragment{
     private List<String> titles,links;
     private String finalUrl="http://feeds.feedburner.com/realhotnewhiphop.xml";
+    private String titleNameForReal;
 
     public HnHHFragment(){
-
+        Random num = new Random();
+        int randomInt = num.nextInt(MainCentralData.allArticleSourcesUrls.size());
+        finalUrl = MainCentralData.allArticleSourcesUrls.get(randomInt);
+        titleNameForReal = MainCentralData.allArticleSourcesNames.get(randomInt);
     }
 
     @Override
@@ -70,6 +76,7 @@ public class HnHHFragment extends Fragment{
 //        listView.setVerticalScrollBarEnabled(false);
 //        listView.setBackgroundColor(Color.LTGRAY);
         new CheckHotNewHipHop(finalUrl, getActivity()).execute();
+        getActivity().getActionBar().setTitle("Source = " + titleNameForReal);
 
         return view;
     }
@@ -124,8 +131,6 @@ public class HnHHFragment extends Fragment{
 
         protected void onPostExecute(Boolean result) {
             if(result){
-                Toast.makeText(getActivity(), "got em", Toast.LENGTH_LONG).show();
-
                 ListView listView = (ListView) getActivity().findViewById(R.id.listView);
                 final ArrayAdapter<String> allTitlesAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,titles);
                 listView.setAdapter(allTitlesAdapter);
@@ -137,41 +142,7 @@ public class HnHHFragment extends Fragment{
                         new DownloadTask(getActivity(), titleeee, linkkkk).execute(linkkkk);
                     }
                 });
-
-
-                listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-
-                    @Override
-                    public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-                                                   final int arg2, long arg3) {
-                        new AlertDialog.Builder(getActivity())
-                                .setTitle("Post entry")
-                                .setMessage("Are you sure you want to Post this entry?")
-                                .setPositiveButton("post", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        Log.v("benmark", "arg2 " + arg2);
-                                        String titleeee = titles.get(arg2);
-                                        String linkkkk = links.get(arg2);
-                                        Log.v("benmark", "d   " + title);
-                                        new DownloadTask(getActivity(), titleeee, linkkkk).execute(linkkkk);
-                                    }
-                                })
-                                .setNegativeButton("delete", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        Log.v("benmark", "arg2 " + arg2);
-                                        String titleeee = titles.get(arg2);
-                                        String link = links.get(arg2);
-                                        allTitlesAdapter.remove(title);
-                                        allTitlesAdapter.notifyDataSetChanged();
-                                    }
-                                })
-                                .setIcon(android.R.drawable.ic_dialog_alert)
-                                .show();
-                        return true;
-                    }
-                });
             }
-
         }
 
         private void parseXMLAndStoreIt(XmlPullParser myParser, InputStream stream, String siteType) {

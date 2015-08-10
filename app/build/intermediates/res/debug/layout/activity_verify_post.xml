@@ -78,5 +78,14 @@
 		android:layout_centerVertical="true"
 		android:layout_alignParentLeft="true"
 		android:layout_alignParentRight="true"/>
+
+	<Button
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Post to TopPost"
+		android:id="@+id/button2"
+		android:onClick="postToTopNow"
+		android:layout_below="@+id/button"
+		android:layout_alignParentRight="true"/>
 </RelativeLayout>
 <!-- From: file:/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/layout/activity_verify_post.xml -->

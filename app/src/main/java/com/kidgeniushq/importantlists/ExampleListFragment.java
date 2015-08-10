@@ -46,48 +46,6 @@ public class ExampleListFragment extends ListFragment {
     @Override
     public void onActivityCreated(Bundle savedState) {
         super.onActivityCreated(savedState);
-
-        getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-
-            @Override
-            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-                                           final int arg2, long arg3) {
-                new AlertDialog.Builder(getActivity())
-                        .setTitle("Delete entry")
-                        .setMessage("Are you sure you want to delete this entry?")
-                        .setPositiveButton("Verify!", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(getActivity(), "right now it shows eerything not deleted", Toast.LENGTH_SHORT).show();
-
-
-                            }
-                        })
-                        .setNegativeButton("delete", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                ParseQuery<ParseObject> query = ParseQuery.getQuery("BandoPost");
-                                query.whereEqualTo("postText", linkArray.get(arg2));
-                                query.findInBackground(new FindCallback<ParseObject>() {
-                                    @Override
-                                    public void done(List<ParseObject> list, ParseException e) {
-                                        if(e==null){
-                                            for(ParseObject po : list){
-                                                try {
-                                                    po.delete();
-                                                    onStart();
-                                                }catch (ParseException pe){
-                                                    Log.v("benmark","error deleting + }" + String.valueOf(pe.getCode()));
-                                                }
-                                            }
-                                        }
-                                    }
-                                });
-                            }
-                        })
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show();
-                return true;
-            }
-        });
     }
 
     @Override

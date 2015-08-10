@@ -85,11 +85,30 @@ public class VerifyPostActivity extends Activity {
         gameScore.put("postLink", getIntent().getStringExtra("link"));
         gameScore.put("postText", getIntent().getStringExtra("caption"));
         gameScore.put("imageUrl", getIntent().getStringExtra("url"));
+        gameScore.put("viewCount", 0);
         gameScore.put("siteType", "article");
         gameScore.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
                 Toast.makeText(getApplicationContext(), "posted " + getIntent().getStringExtra("caption"), Toast.LENGTH_LONG).show();
+                finish();
+            }
+        });
+    }
+
+    public void postToTopNow(View v) {
+        // does something very interesting
+        ParseObject gameScore = new ParseObject("BandoFeaturedPost");
+        gameScore.put("postLink", getIntent().getStringExtra("link"));
+        gameScore.put("text", getIntent().getStringExtra("caption"));
+        gameScore.put("imageUrl", getIntent().getStringExtra("url"));
+        gameScore.put("viewCount", 0);
+        gameScore.put("siteType", "article");
+        gameScore.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                Toast.makeText(getApplicationContext(), "posted " + getIntent().getStringExtra("caption"), Toast.LENGTH_LONG).show();
+                finish();
             }
         });
     }

@@ -7,6 +7,7 @@ import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -22,6 +23,7 @@ import com.kidgeniushq.HnHHFragment;
 import com.kidgeniushq.importantlists.ExampleListFragment;
 import com.kidgeniushq.importantlists.InstagramAdminFragment;
 import com.kidgeniushq.importantlists.TweetsFragment;
+import com.kidgeniushq.staticstuff.MainCentralData;
 
 
 public class RealImportantActivity extends Activity implements ActionBar.TabListener {
@@ -58,7 +60,7 @@ public class RealImportantActivity extends Activity implements ActionBar.TabList
         //mViewPager.setCurrentItem(2);
 
         // For each of the sections in the app, add a tab to the action bar.
-        for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
+        for (int i = 0; i < 1; i++) {
             actionBar.addTab(
                     actionBar.newTab()
                             .setText(mSectionsPagerAdapter.getPageTitle(i))
@@ -115,28 +117,21 @@ public class RealImportantActivity extends Activity implements ActionBar.TabList
             else if(position==1)
                 return new TweetsFragment();
             else
-                return new ExampleListFragment();
+                return new HnHHFragment();
         }
 
         @Override
         public int getCount() {
-            return 4;
+            return 1;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            Locale l = Locale.getDefault();
-            switch (position) {
-                case 2:
-                    return getString(R.string.title_section1).toUpperCase(l);
-                case 1:
-                    return getString(R.string.title_section3).toUpperCase(l);
-                case 0:
-                    return "HotnewHipHOps".toUpperCase(l);
-                case 3:
-                    return getString(R.string.title_section4).toUpperCase(l);
-            }
-            return null;
+            return "posttobando";
         }
+    }
+
+    public void newoSourhce(View v){
+        startActivity(new Intent(this, RealImportantActivity.class));
     }
 }

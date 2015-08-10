@@ -91,7 +91,7 @@ public class MainActivity extends Activity {
 		MainCentralData.loadAllHNHHArticles();
 
 		startActivity(new Intent(this, RealImportantActivity.class));
-		//startService(new Intent(getApplicationContext(), InstaService.class));
+		startService(new Intent(getApplicationContext(), InstaService.class));
 	}
 	
 	@Override
@@ -104,9 +104,6 @@ public class MainActivity extends Activity {
 			//new GetFollowingAsync(MainActivity.this).execute();
 			new GetTweetsAsync(MainActivity.this).execute();
 		}else{
-			Toast.makeText(getApplicationContext(), "Not logged in twitter. cant get in background", Toast.LENGTH_LONG).show();
-			Toast.makeText(getApplicationContext(), "Not logged in twitter. cant get in background", Toast.LENGTH_LONG).show();
-
 		}
 
 	}

@@ -12,6 +12,16 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:id="@+id/listView"
+		android:layout_below="@+id/button3"
+		android:layout_alignParentRight="true"/>
+
+	<Button
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="New Source"
+		android:id="@+id/button3"
 		android:layout_alignParentTop="true"
-		android:layout_centerHorizontal="true"/>
+		android:layout_alignRight="@+id/listView"
+		android:onClick="newoSourhce"
+		android:layout_marginRight="201dp"/>
 </RelativeLayout>
