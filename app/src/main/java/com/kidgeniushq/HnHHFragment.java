@@ -247,14 +247,17 @@ public class HnHHFragment extends Fragment{
             if(result.contains("og:image")){
                 Log.v("benmark", "gheyy");
                 String[] parts = result.split("\"og:image\"");
+                if(parts.length==1){
+                    Toast.makeText(getActivity(), "NO OG IMAGE FOUND", Toast.LENGTH_LONG).show();
+                }else{
+                    String partAfterOGImage = parts[1];
+                    Log.v("benmark", "found partAfterOGImage " + partAfterOGImage);
+                    String[] getRidOfTheEnd = partAfterOGImage.split("/><m");
+                    String theLinkSHouldBe = getRidOfTheEnd[0].split("\"")[1];
 
-                String partAfterOGImage = parts[1];
-                Log.v("benmark", "found partAfterOGImage " + partAfterOGImage);
-                String[] getRidOfTheEnd = partAfterOGImage.split("/><m");
-                String theLinkSHouldBe = getRidOfTheEnd[0].split("\"")[1];
-
-                Log.v("benmark", " theLinkSHouldBe " + theLinkSHouldBe);
-                updateParseOgImage(theLinkSHouldBe, title, url);
+                    Log.v("benmark", " theLinkSHouldBe " + theLinkSHouldBe);
+                    updateParseOgImage(theLinkSHouldBe, title, url);
+                }
             }
         }
     }

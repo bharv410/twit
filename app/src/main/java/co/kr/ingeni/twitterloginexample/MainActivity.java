@@ -9,8 +9,10 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -58,6 +60,7 @@ public class MainActivity extends ListActivity {
 	private ListView followingListView;
 	private TextView todTextView,todTitleTextView;
 	private FloatingActionButton fab;
+	private ArrayAdapter<String> myAdapter;
 
 	ProgressDialog progress;
 
@@ -76,8 +79,8 @@ public class MainActivity extends ListActivity {
 		MainCentralData.loadAllHNHHArticles();
 
 		// initiate the listadapter
-		ArrayAdapter<String> myAdapter = new ArrayAdapter <String>(this,
-				R.layout.row_layout, R.id.listText, MainCentralData.allArticleSourcesUrls);
+		myAdapter = new ArrayAdapter <String>(this,
+				R.layout.row_layout, R.id.listText, MainCentralData.allArticleSourcesNames);
 
 		// assign the list adapter
 		setListAdapter(myAdapter);
@@ -90,7 +93,7 @@ public class MainActivity extends ListActivity {
 	protected void onListItemClick(ListView list, View view, int position, long id) {
 		super.onListItemClick(list, view, position, id);
 
-		String selectedItem = (String) getListView().getItemAtPosition(position);
+		String selectedItem = MainCentralData.allArticleSourcesUrls.get(position);
 		//String selectedItem = (String) getListAdapter().getItem(position);
 		startWithFeed(selectedItem);
 	}
@@ -104,7 +107,19 @@ public class MainActivity extends ListActivity {
 	public void startWithFeed(String url){
 		Intent i = new Intent(this, RealImportantActivity.class);
 		i.putExtra("url", url);
-		startActivity(i );
+		startActivity(i);
 	}
 
+	public void addToList(View v){
+		EditText et = (EditText)findViewById(R.id.editTextForList);
+		String urlToAdd = et.getText().toString();
+		startWithFeed(urlToAdd);
+		Toast.makeText(getApplicationContext(), "SEARCHING THIS RSS FEED FOR ARTICLES", Toast.LENGTH_LONG).show();
+		et.setText("");
+		InputMethodManager inputManager = (InputMethodManager)
+				getSystemService(Context.INPUT_METHOD_SERVICE);
+
+		inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+				InputMethodManager.HIDE_NOT_ALWAYS);
+	}
 }

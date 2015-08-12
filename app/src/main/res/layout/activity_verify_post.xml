@@ -17,7 +17,8 @@
 		android:layout_marginRight="@dimen/feed_item_margin"
 		android:layout_marginTop="@dimen/feed_item_margin"
 		android:background="@drawable/bg_parent_rounded_corner"
-		android:layout_above="@+id/button">
+		android:layout_above="@+id/button"
+		android:id="@+id/relativeLayout">
 
 			<com.kidgeniushq.twitter.SquareImageView
 				android:id="@+id/grid_image"
@@ -75,9 +76,9 @@
 		android:text="Post"
 		android:id="@+id/button"
 		android:onClick="postNow"
-		android:layout_centerVertical="true"
-		android:layout_alignParentLeft="true"
-		android:layout_alignParentRight="true"/>
+		android:layout_alignTop="@+id/button2"
+		android:layout_alignLeft="@+id/relativeLayout"
+		android:layout_toLeftOf="@+id/button2"/>
 
 	<Button
 		android:layout_width="wrap_content"
@@ -85,6 +86,6 @@
 		android:text="Post to TopPost"
 		android:id="@+id/button2"
 		android:onClick="postToTopNow"
-		android:layout_below="@+id/button"
+		android:layout_alignParentBottom="true"
 		android:layout_alignParentRight="true"/>
 </RelativeLayout>

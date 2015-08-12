@@ -2,6 +2,20 @@
 <items version="2" >
 
     <item
+        jar="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/libs/Parse-1.9.4.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="56c22930b5d4f77015b6a40c7f14103d3e101001">
+        <dex dex="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/pre-dexed/debug/Parse-1.9.4-86a38734536fec1728445df14b5d6fc24c184140.jar" />
+    </item>
+    <item
+        jar="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-ee941e018793787c410e700a4035c4cdee0b5f77.jar" />
+    </item>
+    <item
         jar="/Users/benjamin.harvey/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.3.2/d6b7f0093cec6c9faf65dbfd6a6a345d0ed25e27/picasso-2.3.2.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -9,18 +23,32 @@
         <dex dex="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/pre-dexed/debug/picasso-2.3.2-09d5676d7a4344f0e42d94da28378be543681518.jar" />
     </item>
     <item
-        jar="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/exploded-aar/se.emilsjolander/android-flipview/1.1.0/jars/classes.jar"
+        jar="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/libs/twitter4j-core-4.0.2.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="ebbf35f12f28ef90e9a37c8d06fbcc880c6bb96f">
-        <dex dex="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/pre-dexed/debug/classes-81b32632c1169b6b5d657aab69b5d1d0867009f8.jar" />
+        sha1="381cf31e9200c2902782f17248d2af18e2ab4c56">
+        <dex dex="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/pre-dexed/debug/twitter4j-core-4.0.2-80108906bbe83ebcc54aa5dcabeac497fb47b09e.jar" />
     </item>
     <item
-        jar="/Users/benjamin.harvey/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
+        jar="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/exploded-aar/cat.ereza/customactivityoncrash/1.3.0/jars/classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
-        <dex dex="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-31fbe4a4762a2eb061446a72d18d26b7cdcd3a72.jar" />
+        sha1="355a8742607b22ebdec4d36119500582b497da12">
+        <dex dex="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/pre-dexed/debug/classes-001393850c6313f667792b1b3eb3565baf35f454.jar" />
+    </item>
+    <item
+        jar="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/exploded-aar/com.android.support/support-v13/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9aa93835393824b436f366120c9ba8a0260ce75d">
+        <dex dex="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/pre-dexed/debug/classes-f2952089611cddf7bb97bc63a0e20eff6b76f3c4.jar" />
+    </item>
+    <item
+        jar="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/exploded-aar/com.android.support/support-v13/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="79a5b6d9fbab3b5fb4c6f86a1ed7a17722fd937b">
+        <dex dex="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-1c7e55579abf892544fa5af9cf01d596100492b6.jar" />
     </item>
     <item
         jar="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
@@ -30,11 +58,11 @@
         <dex dex="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/pre-dexed/debug/classes-4782b44f50c2840c5820cff10f2d1d606fb6fe8a.jar" />
     </item>
     <item
-        jar="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/exploded-aar/com.android.support/support-v13/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        jar="/Users/benjamin.harvey/.gradle/caches/modules-2/files-2.1/net.orange-box.storebox/storebox-lib/1.3.0/780f9e1af265442d37aff579e193c86614dd9d79/storebox-lib-1.3.0.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="79a5b6d9fbab3b5fb4c6f86a1ed7a17722fd937b">
-        <dex dex="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-1c7e55579abf892544fa5af9cf01d596100492b6.jar" />
+        sha1="780f9e1af265442d37aff579e193c86614dd9d79">
+        <dex dex="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/pre-dexed/debug/storebox-lib-1.3.0-6715fa8d7ea0f5fe69f6698199b8b124697f1b68.jar" />
     </item>
     <item
         jar="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/libs/universal-image-loader-1.9.3-with-sources.jar"
@@ -58,6 +86,13 @@
         <dex dex="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/pre-dexed/debug/classes-ffcd1aac3354577eed9e9e4ea9d37b0fcc4f2ab5.jar" />
     </item>
     <item
+        jar="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/exploded-aar/se.emilsjolander/android-flipview/1.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="ebbf35f12f28ef90e9a37c8d06fbcc880c6bb96f">
+        <dex dex="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/pre-dexed/debug/classes-81b32632c1169b6b5d657aab69b5d1d0867009f8.jar" />
+    </item>
+    <item
         jar="/Users/benjamin.harvey/.gradle/caches/modules-2/files-2.1/net.jodah/typetools/0.4.1/dc7f85763134c845c2fa8fdfb83b79680e01c7a/typetools-0.4.1.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -72,46 +107,18 @@
         <dex dex="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/pre-dexed/debug/classes-94e5c92093ea8eddca969afe61a1da4767ca797e.jar" />
     </item>
     <item
+        jar="/Users/benjamin.harvey/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-31fbe4a4762a2eb061446a72d18d26b7cdcd3a72.jar" />
+    </item>
+    <item
         jar="/Users/benjamin.harvey/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.0/6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd/bolts-android-1.2.0.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd">
         <dex dex="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/pre-dexed/debug/bolts-android-1.2.0-a0e3ade503f7176c7856fa1b01642dc3d6bf0e92.jar" />
-    </item>
-    <item
-        jar="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/libs/twitter4j-core-4.0.2.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="381cf31e9200c2902782f17248d2af18e2ab4c56">
-        <dex dex="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/pre-dexed/debug/twitter4j-core-4.0.2-80108906bbe83ebcc54aa5dcabeac497fb47b09e.jar" />
-    </item>
-    <item
-        jar="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
-        <dex dex="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-ee941e018793787c410e700a4035c4cdee0b5f77.jar" />
-    </item>
-    <item
-        jar="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/libs/Parse-1.9.4.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="56c22930b5d4f77015b6a40c7f14103d3e101001">
-        <dex dex="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/pre-dexed/debug/Parse-1.9.4-86a38734536fec1728445df14b5d6fc24c184140.jar" />
-    </item>
-    <item
-        jar="/Users/benjamin.harvey/.gradle/caches/modules-2/files-2.1/net.orange-box.storebox/storebox-lib/1.3.0/780f9e1af265442d37aff579e193c86614dd9d79/storebox-lib-1.3.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="780f9e1af265442d37aff579e193c86614dd9d79">
-        <dex dex="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/pre-dexed/debug/storebox-lib-1.3.0-6715fa8d7ea0f5fe69f6698199b8b124697f1b68.jar" />
-    </item>
-    <item
-        jar="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/exploded-aar/com.android.support/support-v13/22.2.0/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="9aa93835393824b436f366120c9ba8a0260ce75d">
-        <dex dex="/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build/intermediates/pre-dexed/debug/classes-f2952089611cddf7bb97bc63a0e20eff6b76f3c4.jar" />
     </item>
 
 </items>

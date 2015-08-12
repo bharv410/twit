@@ -8,25 +8,30 @@
                 android:paddingTop="@dimen/activity_vertical_margin"
                 tools:context=".MainActivity" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/mainText"
-        android:text="My list" />
-
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/mainText"
         android:id="@android:id/list"
-        android:background="#aaaaaa" />
+        android:background="#aaaaaa"
+        android:layout_below="@+id/editTextForList"
+        android:layout_alignParentLeft="true"/>
 
-    <TextView
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/mainText"
-        android:id="@android:id/empty"
-        android:text="There is no data"
-        android:textStyle="bold" />
+        android:id="@+id/editTextForList"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:text="http://www."
+        android:layout_toRightOf="@+id/button4"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SEARCH"
+        android:id="@+id/button4"
+        android:onClick="addToList"
+        android:layout_above="@android:id/list"
+        android:layout_alignParentLeft="true"/>
 
 </RelativeLayout><!-- From: file:/Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/layout/activity_main.xml -->
