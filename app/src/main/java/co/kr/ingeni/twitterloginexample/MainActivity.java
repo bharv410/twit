@@ -1,6 +1,7 @@
 package co.kr.ingeni.twitterloginexample;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -34,7 +36,7 @@ import java.util.ArrayList;
 import twitter4j.Status;
 import twitter4j.User;
 
-public class MainActivity extends Activity {
+public class MainActivity extends ListActivity {
 
 	private final String client_id = "49fcbbb3abe9448798d8849806da6cd4";
 	private final String client_secret = "424a0cc8965a4f7da7c73897fb90b810";
@@ -68,92 +70,41 @@ public class MainActivity extends Activity {
 
 		getActionBar().setTitle("");
 
-		tweetOfTheDayLayout = (RelativeLayout)findViewById(R.id.tweetofthedaylayout);
-		todImageView = (ImageView)findViewById(R.id.todImageView);
-		todTextView = (TextView)findViewById(R.id.todText);
-		tweetOfTheDayLayout.setVisibility(View.INVISIBLE);
-		todImageView.setVisibility(View.INVISIBLE);
-		todTextView.setVisibility(View.INVISIBLE);
-		twitterLoginBtn = (ImageView) findViewById(R.id.twitter_login_btn);
-		Picasso.with(getApplicationContext()).load(getString(R.string.login_button_url)).into(twitterLoginBtn);
 
-		twitterLoginBtn.setVisibility(View.GONE);
-
-		followingListView = (ListView)findViewById(R.id.list);
-		fab = (FloatingActionButton) findViewById(R.id.fab);
-		fab.attachToListView(followingListView);
-
-		tweetOfTheDayLayout.setVisibility(View.VISIBLE);
-		todTextView.setVisibility(View.VISIBLE);
-		todTextView.setTextColor(Color.BLUE);
 
 		MainCentralData.loadAllIGPosts();
 		MainCentralData.loadAllHNHHArticles();
 
-		startActivity(new Intent(this, RealImportantActivity.class));
+		// initiate the listadapter
+		ArrayAdapter<String> myAdapter = new ArrayAdapter <String>(this,
+				R.layout.row_layout, R.id.listText, MainCentralData.allArticleSourcesUrls);
+
+		// assign the list adapter
+		setListAdapter(myAdapter);
+
 		startService(new Intent(getApplicationContext(), InstaService.class));
+	}
+
+	// when an item of the list is clicked
+	@Override
+	protected void onListItemClick(ListView list, View view, int position, long id) {
+		super.onListItemClick(list, view, position, id);
+
+		String selectedItem = (String) getListView().getItemAtPosition(position);
+		//String selectedItem = (String) getListAdapter().getItem(position);
+		startWithFeed(selectedItem);
 	}
 	
 	@Override
 	protected void onResume() {
 		super.onResume();
-		if (TwitterLogin.getTwitterLoginCheck() != false && MainActivity.loggedInTwitter) {
-			twitterLoginBtn.setVisibility(View.GONE);
-			progress = ProgressDialog.show(this, "Please wait",
-					"loading friends", true);
-			//new GetFollowingAsync(MainActivity.this).execute();
-			new GetTweetsAsync(MainActivity.this).execute();
-		}else{
-		}
 
 	}
 
-	public void setFollowing(ArrayList<User> following){
-		progress.dismiss();
-
-		UsersAdapter adapterForFollowings = new UsersAdapter(getApplicationContext(), following);
-		followingListView.setAdapter(adapterForFollowings);
-		adapterForFollowings.notifyDataSetChanged();
+	public void startWithFeed(String url){
+		Intent i = new Intent(this, RealImportantActivity.class);
+		i.putExtra("url", url);
+		startActivity(i );
 	}
 
-	public void setTweets(ArrayList<Status> tweets){
-		progress.dismiss();
-		mHandler.postDelayed(new Runnable() {
-			public void run() {
-				fab.show();
-			}
-		}, 1000);
-		todTitleTextView = (TextView)findViewById(R.id.todTitleTextView);
-		todTitleTextView.setText("Tweet Of The Day");
-
-		TweetsAdapter adapterForTweets = new TweetsAdapter(getApplicationContext(), new ArrayList<Status>(tweets.subList(3,5)));
-		followingListView.setAdapter(adapterForTweets);
-		adapterForTweets.notifyDataSetChanged();
-
-		followingListView.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> parent, View view,
-									int position, long id) {
-
-				Status tweet = (Status)followingListView.getItemAtPosition(position);
-				Intent i = new Intent(Intent.ACTION_VIEW);
-				String tweetUrl = "https://twitter.com/" + tweet.getUser().getScreenName() + "/status/" + String.valueOf(tweet.getId());
-				i.setData(Uri.parse(tweetUrl));
-				startActivity(i);
-			}
-		});
-	}
-
-	public void goToSettings(View v){
-		todTextView.setVisibility(View.INVISIBLE);
-		startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-	}
-
-	public void setImageUrl(String url){
-		todImageView.setVisibility(View.VISIBLE);
-		todTextView.setVisibility(View.VISIBLE);
-		Picasso.with(getApplicationContext()).load(url).into(todImageView);
-		todTextView.setText("(No caption)");
-
-		tweetOfTheDayLayout.setVisibility(View.VISIBLE);
-	}
 }

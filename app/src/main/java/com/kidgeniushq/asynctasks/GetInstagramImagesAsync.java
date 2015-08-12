@@ -65,7 +65,7 @@ public class GetInstagramImagesAsync extends AsyncTask<URL, Void, Integer> {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        activity.setImageUrl(items.get(1));
+        //activity.setImageUrl(items.get(1));
 
     }
 }

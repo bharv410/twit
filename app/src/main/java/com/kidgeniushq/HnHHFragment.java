@@ -60,9 +60,7 @@ public class HnHHFragment extends Fragment{
 
     public HnHHFragment(){
         Random num = new Random();
-        int randomInt = num.nextInt(MainCentralData.allArticleSourcesUrls.size());
-        finalUrl = MainCentralData.allArticleSourcesUrls.get(randomInt);
-        titleNameForReal = MainCentralData.allArticleSourcesNames.get(randomInt);
+
     }
 
     @Override
@@ -75,8 +73,8 @@ public class HnHHFragment extends Fragment{
 //        listView.setDividerHeight(1);
 //        listView.setVerticalScrollBarEnabled(false);
 //        listView.setBackgroundColor(Color.LTGRAY);
+        finalUrl = getActivity().getIntent().getStringExtra("url");
         new CheckHotNewHipHop(finalUrl, getActivity()).execute();
-        getActivity().getActionBar().setTitle("Source = " + titleNameForReal);
 
         return view;
     }
@@ -262,6 +260,7 @@ public class HnHHFragment extends Fragment{
     }
 
     private void updateParseOgImage(String link , final String caption, String url){
+        Log.v("benmark", link);
         Intent intent = new Intent(getActivity(), VerifyPostActivity.class);
         intent.putExtra("url",link);
         intent.putExtra("caption",caption);

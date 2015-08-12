@@ -48,6 +48,6 @@ public class GetFollowingAsync extends AsyncTask<Void, Void, ArrayList<User>> {
     @Override
     protected void onPostExecute(ArrayList<User> followings) {
         super.onPostExecute(followings);
-        activity.setFollowing(followings);
+        //activity.setFollowing(followings);
     }
 }

@@ -132,6 +132,5 @@ public class RealImportantActivity extends Activity implements ActionBar.TabList
     }
 
     public void newoSourhce(View v){
-        startActivity(new Intent(this, RealImportantActivity.class));
     }
 }

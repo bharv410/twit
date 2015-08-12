@@ -59,6 +59,6 @@ public class GetTweetsAsync extends AsyncTask<Void, Void, ArrayList<twitter4j.St
              });
         }
         super.onPostExecute(tweets);
-        activity.setTweets(tweets);
+        //activity.setTweets(tweets);
     }
 }
