@@ -74,6 +74,9 @@ public class MainCentralData {
 
     private static ArrayList<String> getAllRSSFeedUrls(){
         ArrayList<String> allArticleSourceUrl = new ArrayList<String>();
+        allArticleSourceUrl.add("http://www.rap-up.com/feed/");
+        allArticleSourceUrl.add("http://assets.complex.com/feeds/channels/music.xml");
+        allArticleSourceUrl.add("http://assets.complex.com/feeds/channels/all.xml");
         allArticleSourceUrl.add("http://feeds.feedburner.com/realhotnewhiphop.xml");
         allArticleSourceUrl.add("http://www.power1051fm.com/podcast/breakfastclub_interviews.xml");
         allArticleSourceUrl.add("http://feeds.feedburner.com/TheFaderMagazine/");
@@ -81,14 +84,16 @@ public class MainCentralData {
         allArticleSourceUrl.add("http://hiphopdx.com/rss/news.xml");
         allArticleSourceUrl.add("http://feeds.feedburner.com/hypebeast/feed");
         allArticleSourceUrl.add("http://feeds.feedburner.com/highsnobiety/rss?format=xml");
-        allArticleSourceUrl.add("http://blog.bleacherreport.com/feed/");
-        allArticleSourceUrl.add("http://feeds.huffingtonpost.com/c/35496/f/677047/index.rss");
         allArticleSourceUrl.add("http://sports.espn.go.com/espn/rss/news");
+        allArticleSourceUrl.add("http://www.vibe.com/category/vixen/feed/");
         return allArticleSourceUrl;
     }
 
     private static ArrayList<String> getAllRSSFeedNames(){
         ArrayList<String> allArticleSourceNames = new ArrayList<String>();
+        allArticleSourceNames.add("rap-up");
+        allArticleSourceNames.add("complex music");
+        allArticleSourceNames.add("complex");
         allArticleSourceNames.add("hotnewhiphop");
         allArticleSourceNames.add("breakfastclub");
         allArticleSourceNames.add("TheFaderMagazine/");
@@ -96,9 +101,8 @@ public class MainCentralData {
         allArticleSourceNames.add("hiphopdx");
         allArticleSourceNames.add("hypebeast");
         allArticleSourceNames.add("highsnobiety");
-        allArticleSourceNames.add("bleacherreport");
-        allArticleSourceNames.add("huffingtonpost");
         allArticleSourceNames.add("espn");
+        allArticleSourceNames.add("vibe");
         return allArticleSourceNames;
     }
 

@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParsePush;
 import com.parse.SaveCallback;
 import com.squareup.picasso.Picasso;
 
@@ -111,5 +112,9 @@ public class VerifyPostActivity extends Activity {
                 finish();
             }
         });
+
+        ParsePush push = new ParsePush();
+        push.setMessage(getIntent().getStringExtra("caption"));
+        push.sendInBackground();
     }
 }

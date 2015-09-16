@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <!-- From: file:/home/ereza/Android/projects/CustomActivityOnCrash/library/src/main/res/values-v14/styles.xml -->
+    <eat-comment/>
+    <style name="CustomActivityOnCrashTheme" parent="android:Theme.Holo.Light.DarkActionBar" ns1:ignore="ResourceName"/>
+</resources>
