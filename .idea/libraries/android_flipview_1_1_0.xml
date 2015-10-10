@@ -5,6 +5,8 @@
       <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/se.emilsjolander/android-flipview/1.1.0/res" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/se.emilsjolander/android-flipview/1.1.0/d02ea377a6a573e2442448b5fcd86adde427402d/android-flipview-1.1.0-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

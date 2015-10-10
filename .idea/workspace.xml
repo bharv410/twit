@@ -22,20 +22,20 @@
   <component name="ChangeListManager">
     <list default="true" id="b40f6f88-ba34-4e72-9ff6-11121344adde" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/kidgeniushq/models/HNHHArticle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/kidgeniushq/services/InstaService.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/kidgeniushq/services/InstaService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/cache.properties.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/gradle_project_sync_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/gradle_project_sync_data.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/kidgeniushq/services/InstaService$CheckHotNewHipHop.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/kidgeniushq/services/InstaService$CheckHotNewHipHop.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/kidgeniushq/services/InstaService$CheckPopularIg.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/kidgeniushq/services/InstaService$CheckPopularIg.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/kidgeniushq/services/InstaService.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/kidgeniushq/services/InstaService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/classes.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/classes.dex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileSnapshots.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/kidgeniushq/services/InstaService$CheckPopularIg.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/kidgeniushq/services/InstaService$CheckPopularIg.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/kidgeniushq/services/InstaService.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/kidgeniushq/services/InstaService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/gradle_project_sync_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/gradle_project_sync_data.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/cache.properties.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/kidgeniushq/services/InstaService$CheckHotNewHipHop.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/kidgeniushq/services/InstaService$CheckHotNewHipHop.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/kidgeniushq/services/InstaService.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/kidgeniushq/services/InstaService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/taskArtifacts.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/classes.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/classes.dex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileHashes.bin" />
     </list>
     <ignored path="TwitterLoginExample.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,8 +66,18 @@
       <file leaf-file-name="HnHHFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kidgeniushq/HnHHFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.666667">
-              <caret line="87" column="39" selection-start-line="87" selection-start-column="39" selection-end-line="87" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="208" column="5" selection-start-line="208" selection-start-column="5" selection-end-line="208" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TweetsFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kidgeniushq/importantlists/TweetsFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="45" column="4" selection-start-line="45" selection-start-column="4" selection-end-line="54" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -76,18 +86,8 @@
       <file leaf-file-name="MainCentralData.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kidgeniushq/staticstuff/MainCentralData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.26008064">
-              <caret line="85" column="80" selection-start-line="85" selection-start-column="80" selection-end-line="85" selection-end-column="80" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RealImportantActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kr/ingeni/twitterloginexample/RealImportantActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.4511041">
+              <caret line="97" column="43" selection-start-line="97" selection-start-column="43" selection-end-line="97" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -97,72 +97,9 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kr/ingeni/twitterloginexample/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="107" column="65" selection-start-line="107" selection-start-column="65" selection-end-line="107" selection-end-column="65" />
+              <caret line="106" column="29" selection-start-line="106" selection-start-column="16" selection-end-line="106" selection-end-column="29" />
               <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="56" selection-start-line="6" selection-start-column="56" selection-end-line="6" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="34" column="44" selection-start-line="34" selection-start-column="44" selection-end-line="34" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VerifyPostActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kr/ingeni/twitterloginexample/VerifyPostActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyApplication.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kidgeniushq/MyApplication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="33" column="62" selection-start-line="33" selection-start-column="62" selection-end-line="33" selection-end-column="62" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_verify_post.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_verify_post.xml">
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="77" column="33" selection-start-line="77" selection-start-column="33" selection-end-line="77" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="android-designer">
-            <state />
           </provider>
         </entry>
       </file>
@@ -1632,8 +1569,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-2205" />
-    <option name="y" value="-552" />
+    <option name="x" value="609" />
+    <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="773" />
   </component>
@@ -1660,28 +1597,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="app">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -1716,6 +1631,28 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1909,10 +1846,10 @@
     <property name="options.searchVisible" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../DispPhotosWithInstagramAPI-master" />
     <property name="recentsLimit" value="5" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="4d1a4e07" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Copy_of_bestavd" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi" />
-    <property name="SearchEverywhereHistoryKey" value="verif&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/co/kr/ingeni/twitterloginexample/VerifyPostActivity.java&#10;mya&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/MyApplication.java&#10;appli&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/MyApplication.java&#10;verify&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/layout/activity_verify_post.xml&#10;maince&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/staticstuff/MainCentralData.java&#10;maina&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/co/kr/ingeni/twitterloginexample/MainActivity.java&#10;fragment_art&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/layout/fragment_articles.xml&#10;verifypo&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/co/kr/ingeni/twitterloginexample/VerifyPostActivity.java&#10;realim&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/co/kr/ingeni/twitterloginexample/RealImportantActivity.java&#10;strings&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/values/strings.xml&#10;ver&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/co/kr/ingeni/twitterloginexample/VerifyPostActivity.java&#10;real&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/co/kr/ingeni/twitterloginexample/RealImportantActivity.java&#10;reali&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/co/kr/ingeni/twitterloginexample/RealImportantActivity.java&#10;in&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/services/InstaService.java&#10;hnh&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/HnHHFragment.java&#10;instaser&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/services/InstaService.java&#10;fragment_ar&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/layout/fragment_articles.xml&#10;instagramadm&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/importantlists/InstagramAdminFragment.java&#10;instagramapp&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/instagram/InstagramApp.java&#10;settings&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/co/kr/ingeni/twitterloginexample/SettingsActivity.java&#10;pref_head&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/xml/pref_headers.xml&#10;pref_he&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/xml/pref_headers.xml&#10;strin&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/values/strings.xml&#10;pref_g&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/xml/pref_general.xml&#10;twitterwritea&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/co/kr/ingeni/twitterloginexample/TwitterWriteActivity.java&#10;strins&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/values/strings_activity_settings.xml&#10;oauthd&#9;PSI&#9;JAVA://com.kidgeniushq.instagram.InstagramDialog.OAuthDialogListener&#10;oau&#9;PSI&#9;JAVA://com.kidgeniushq.instagram.InstagramDialog.OAuthDialogListener&#10;instagramse&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/instagram/InstagramSession.java&#10;instagramap&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/instagram/InstagramApp.java&#10;twitterwritet&#9;PSI&#9;JAVA://com.kidgeniushq.twitter.TwitterWriteTaskFunction&#10;twitterus&#9;PSI&#9;JAVA://com.kidgeniushq.twitter.TwitterUserTaskFunction&#10;twitter_we&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/layout/twitter_web_view.xml&#10;twitterwebv&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/twitter/TwitterWebView.java&#10;twit&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/twitter/TwitterLogin.java&#10;twi&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/twitter/TwitterLogin.java&#10;twitt&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/twitter/TwitterLogin.java&#10;tw&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/asynctasks/GetTweetsAsync.java&#10;app&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/MyApplication.java&#10;instaserv&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/services/InstaService.java&#10;instagramad&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/importantlists/InstagramAdminFragment.java&#10;rea&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/co/kr/ingeni/twitterloginexample/RealImportantActivity.java&#10;main&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/co/kr/ingeni/twitterloginexample/MainActivity.java&#10;gradle&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build.gradle&#10;insta&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/importantlists/InstagramAdminFragment.java&#10;instag&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/importantlists/InstagramAdminFragment.java&#10;imp&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/co/kr/ingeni/twitterloginexample/RealImportantActivity.java&#10;instagrampo&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/models/InstagramPost.java&#10;maincentra&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/staticstuff/MainCentralData.java&#10;strings.&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/values/strings.xml" />
+    <property name="SearchEverywhereHistoryKey" value="h&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/HnHHFragment.java&#10;tweets&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/importantlists/TweetsFragment.java&#10;maince&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/staticstuff/MainCentralData.java&#10;tweetsf&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/importantlists/TweetsFragment.java&#10;verify&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/co/kr/ingeni/twitterloginexample/VerifyPostActivity.java&#10;verif&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/co/kr/ingeni/twitterloginexample/VerifyPostActivity.java&#10;mya&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/MyApplication.java&#10;appli&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/MyApplication.java&#10;maina&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/co/kr/ingeni/twitterloginexample/MainActivity.java&#10;fragment_art&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/layout/fragment_articles.xml&#10;verifypo&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/co/kr/ingeni/twitterloginexample/VerifyPostActivity.java&#10;realim&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/co/kr/ingeni/twitterloginexample/RealImportantActivity.java&#10;strings&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/values/strings.xml&#10;ver&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/co/kr/ingeni/twitterloginexample/VerifyPostActivity.java&#10;real&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/co/kr/ingeni/twitterloginexample/RealImportantActivity.java&#10;reali&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/co/kr/ingeni/twitterloginexample/RealImportantActivity.java&#10;in&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/services/InstaService.java&#10;hnh&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/HnHHFragment.java&#10;instaser&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/services/InstaService.java&#10;fragment_ar&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/layout/fragment_articles.xml&#10;instagramadm&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/importantlists/InstagramAdminFragment.java&#10;instagramapp&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/instagram/InstagramApp.java&#10;settings&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/co/kr/ingeni/twitterloginexample/SettingsActivity.java&#10;pref_head&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/xml/pref_headers.xml&#10;pref_he&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/xml/pref_headers.xml&#10;strin&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/values/strings.xml&#10;pref_g&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/xml/pref_general.xml&#10;twitterwritea&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/co/kr/ingeni/twitterloginexample/TwitterWriteActivity.java&#10;strins&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/values/strings_activity_settings.xml&#10;oauthd&#9;PSI&#9;JAVA://com.kidgeniushq.instagram.InstagramDialog.OAuthDialogListener&#10;oau&#9;PSI&#9;JAVA://com.kidgeniushq.instagram.InstagramDialog.OAuthDialogListener&#10;instagramse&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/instagram/InstagramSession.java&#10;instagramap&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/instagram/InstagramApp.java&#10;twitterwritet&#9;PSI&#9;JAVA://com.kidgeniushq.twitter.TwitterWriteTaskFunction&#10;twitterus&#9;PSI&#9;JAVA://com.kidgeniushq.twitter.TwitterUserTaskFunction&#10;twitter_we&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/res/layout/twitter_web_view.xml&#10;twitterwebv&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/twitter/TwitterWebView.java&#10;twit&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/twitter/TwitterLogin.java&#10;twi&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/twitter/TwitterLogin.java&#10;twitt&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/twitter/TwitterLogin.java&#10;tw&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/asynctasks/GetTweetsAsync.java&#10;app&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/MyApplication.java&#10;instaserv&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/services/InstaService.java&#10;instagramad&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/importantlists/InstagramAdminFragment.java&#10;rea&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/co/kr/ingeni/twitterloginexample/RealImportantActivity.java&#10;main&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/co/kr/ingeni/twitterloginexample/MainActivity.java&#10;gradle&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/build.gradle&#10;insta&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/importantlists/InstagramAdminFragment.java&#10;instag&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/com/kidgeniushq/importantlists/InstagramAdminFragment.java&#10;imp&#9;FILE&#9;file:///Users/benjamin.harvey/Downloads/TwitterLoginExample/app/src/main/java/co/kr/ingeni/twitterloginexample/RealImportantActivity.java" />
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="FullScreen" value="false" />
@@ -1945,6 +1882,7 @@
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="ACTIVITY_CLASS" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
       <option name="DEPLOY" value="true" />
       <option name="ARTIFACT_NAME" value="" />
@@ -1959,7 +1897,8 @@
       <option name="NETWORK_LATENCY" value="none" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="0" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
       <option name="SELECTED_CLOUD_DEVICE_CONFIGURATION_ID" value="0" />
@@ -1989,7 +1928,8 @@
       <option name="NETWORK_LATENCY" value="none" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="0" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
       <option name="SELECTED_CLOUD_DEVICE_CONFIGURATION_ID" value="0" />
@@ -2098,6 +2038,7 @@
     <configuration default="false" name="app" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="app" />
       <option name="ACTIVITY_CLASS" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
       <option name="DEPLOY" value="true" />
       <option name="ARTIFACT_NAME" value="" />
@@ -2112,7 +2053,8 @@
       <option name="NETWORK_LATENCY" value="none" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="0" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
       <option name="SELECTED_CLOUD_DEVICE_CONFIGURATION_ID" value="0" />
@@ -2167,8 +2109,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2205" y="-552" width="1280" height="773" extended-state="0" />
-    <editor active="true" />
+    <frame x="609" y="23" width="1280" height="773" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32949087" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23592085" sideWeight="0.3933764" order="7" side_tool="false" content_ui="tabs" />
@@ -2177,17 +2119,17 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32495812" sideWeight="0.34975767" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43378997" sideWeight="0.37156704" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.43378997" sideWeight="0.37156704" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20243531" sideWeight="0.3489499" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20243531" sideWeight="0.6502423" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16074313" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29680365" sideWeight="0.45476574" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2197,6 +2139,8 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33789954" sideWeight="0.6502423" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29680365" sideWeight="0.45476574" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -2219,7 +2163,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/kidgeniushq/staticstuff/MainCentralData.java</url>
-          <line>86</line>
+          <line>88</line>
           <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
@@ -2258,29 +2202,22 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/postlistitem.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="-16.2">
           <caret line="27" column="49" selection-start-line="27" selection-start-column="49" selection-end-line="27" selection-end-column="49" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/iglistitem.xml">
       <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/iglistitem.xml">
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="-15.6">
           <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kidgeniushq/importantlists/TweetsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="45" column="4" selection-start-line="45" selection-start-column="4" selection-end-line="54" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -2292,13 +2229,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/twitter_web_view.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.172414">
           <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kidgeniushq/twitter/TwitterUserTaskFunction.java">
@@ -2435,13 +2372,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/grid_single.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kidgeniushq/handlers/HandleXML.java">
@@ -2467,14 +2404,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_articles.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="24" column="36" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="36" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kidgeniushq/importantlists/ExampleListFragment.java">
@@ -2506,62 +2443,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kr/ingeni/twitterloginexample/RealImportantActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="32" column="34" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="34" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_verify_post.xml">
       <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_verify_post.xml">
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="77" column="33" selection-start-line="77" selection-start-column="33" selection-end-line="77" selection-end-column="33" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/row_layout.xml">
       <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/row_layout.xml">
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_row.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="24" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
       <provider editor-type-id="android-designer">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kr/ingeni/twitterloginexample/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="107" column="65" selection-start-line="107" selection-start-column="65" selection-end-line="107" selection-end-column="65" />
+          <caret line="15" column="24" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="24" />
           <folding />
         </state>
       </provider>
@@ -2570,7 +2491,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="56" selection-start-line="6" selection-start-column="56" selection-end-line="6" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2601,30 +2521,51 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="33" column="62" selection-start-line="33" selection-start-column="62" selection-end-line="33" selection-end-column="62" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kr/ingeni/twitterloginexample/VerifyPostActivity.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4479419">
+          <caret line="95" column="13" selection-start-line="95" selection-start-column="13" selection-end-line="95" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kr/ingeni/twitterloginexample/RealImportantActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.092009686">
+          <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/co/kr/ingeni/twitterloginexample/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <caret line="106" column="29" selection-start-line="106" selection-start-column="16" selection-end-line="106" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kidgeniushq/importantlists/TweetsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="4" selection-start-line="45" selection-start-column="4" selection-end-line="54" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kidgeniushq/HnHHFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.666667">
-          <caret line="87" column="39" selection-start-line="87" selection-start-column="39" selection-end-line="87" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="208" column="5" selection-start-line="208" selection-start-column="5" selection-end-line="208" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/kidgeniushq/staticstuff/MainCentralData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26008064">
-          <caret line="85" column="80" selection-start-line="85" selection-start-column="80" selection-end-line="85" selection-end-column="80" />
+        <state vertical-scroll-proportion="0.4511041">
+          <caret line="97" column="43" selection-start-line="97" selection-start-column="43" selection-end-line="97" selection-end-column="43" />
           <folding />
         </state>
       </provider>

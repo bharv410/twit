@@ -75,6 +75,8 @@ public class MainCentralData {
     private static ArrayList<String> getAllRSSFeedUrls(){
         ArrayList<String> allArticleSourceUrl = new ArrayList<String>();
         allArticleSourceUrl.add("http://www.rap-up.com/feed/");
+        allArticleSourceUrl.add("http://feeds.feedburner.com/indiewire/shadowandact?format=xml");
+        allArticleSourceUrl.add("http://www.theroot.com/articles.teaser.all.25.rss");
         allArticleSourceUrl.add("http://assets.complex.com/feeds/channels/music.xml");
         allArticleSourceUrl.add("http://assets.complex.com/feeds/channels/all.xml");
         allArticleSourceUrl.add("http://feeds.feedburner.com/realhotnewhiphop.xml");
@@ -92,6 +94,8 @@ public class MainCentralData {
     private static ArrayList<String> getAllRSSFeedNames(){
         ArrayList<String> allArticleSourceNames = new ArrayList<String>();
         allArticleSourceNames.add("rap-up");
+        allArticleSourceNames.add("shadow and act");
+        allArticleSourceNames.add("the root");
         allArticleSourceNames.add("complex music");
         allArticleSourceNames.add("complex");
         allArticleSourceNames.add("hotnewhiphop");
